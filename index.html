@@ -311,7 +311,7 @@ textarea{min-height:100px;resize:none;}
           <div>📍 경기도 의정부시 호국로 1195-1, 4층</div>
           <div>🏢 사업자번호 : 761-87-02647</div>
           <div>📦 통신판매업 : 제2023-의정부흥선-0457호</div>
-          <div>✉️ <a href="mailto:hypo3300@naver.com" style="color:var(--gold2);text-decoration:none;">hypo3300@naver.com</a></div>
+          <div>✉️ <a href="/cdn-cgi/l/email-protection#533b2a233c60606363133d322536217d303c3e" style="color:var(--gold2);text-decoration:none;"><span class="__cf_email__" data-cfemail="bfd7c6cfd08c8c8f8fffd1dec9dacd91dcd0d2">[email&#160;protected]</span></a></div>
         </div>
       </div>
       <div style="font-size:.68rem;color:rgba(232,236,244,.18);margin-top:1rem;text-align:center;">© 2025 루타글로벌 · (주)비에스컴퍼니. All rights reserved.</div>
@@ -329,7 +329,7 @@ textarea{min-height:100px;resize:none;}
   <button class="nav-tab" id="tab-apply" onclick="goPage('apply')"><span class="tab-icon">✍️</span><span class="tab-label">신청</span><div class="tab-dot"></div></button>
 </nav>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 let current = 'home';
 function goPage(name){
   if(name===current) return;
@@ -343,7 +343,7 @@ function goPage(name){
   current=name;
 }
 
-const SCRIPT_URL='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbyuT-5DZ5q5rcM79BvCc5hnWkUbHisBCDOi1Z3m9u9Yh5ieTOA7aFWGxUHQseyeBn-DJQ/exec';
 document.getElementById('applyForm').addEventListener('submit',async function(e){
   e.preventDefault();
   const btn=this.querySelector('button[type=submit]');
@@ -353,10 +353,3 @@ document.getElementById('applyForm').addEventListener('submit',async function(e)
   data.timestamp=new Date().toLocaleString('ko-KR');
   try{
     await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    msg.style.display='block'; this.reset();
-  }catch(err){alert('오류가 발생했습니다. 직접 연락 부탁드립니다: 010-8653-4054');}
-  btn.textContent='신청서 제출하기'; btn.disabled=false;
-});
-</script>
-</body>
-</html>
