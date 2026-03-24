@@ -8,30 +8,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#0d1520;--ink2:#111e2e;
-  --gold:#b8964e;--gold2:#d4af6a;--gold3:#f0d090;
-  --text:#e8ecf4;--muted:#7a8ba8;
-  --border:rgba(184,150,78,.2);--card:rgba(255,255,255,.04);
-  --nav-h:60px;--bottom-h:64px;
-}
+:root{--ink:#0d1520;--ink2:#111e2e;--gold:#b8964e;--gold2:#d4af6a;--gold3:#f0d090;--text:#e8ecf4;--muted:#7a8ba8;--border:rgba(184,150,78,.2);--card:rgba(255,255,255,.04);--nav-h:60px;--bottom-h:64px;}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;}
 body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
-
 .top-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);background:rgba(13,21,32,.97);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.2rem;backdrop-filter:blur(12px);}
 .top-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;letter-spacing:1.5px;color:#fff;}
 .top-logo span{color:var(--gold);}
 .top-apply{background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:1.5px;padding:.4rem 1rem;border-radius:3px;border:none;cursor:pointer;text-transform:uppercase;}
-
 .pages{position:fixed;top:var(--nav-h);left:0;right:0;bottom:var(--bottom-h);overflow:hidden;}
-
 .page{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;transform:translateX(30px);pointer-events:none;transition:opacity .32s ease,transform .32s ease;padding:1.5rem 1.2rem 2rem;}
 .page.active{opacity:1;transform:translateX(0);pointer-events:all;}
 .page.exit{opacity:0;transform:translateX(-30px);}
 .page::-webkit-scrollbar{display:none;}
 .page{-ms-overflow-style:none;scrollbar-width:none;}
-
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:200;height:var(--bottom-h);background:rgba(10,18,30,.98);border-top:1px solid var(--border);display:flex;backdrop-filter:blur(12px);padding-bottom:env(safe-area-inset-bottom);}
 .nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:color .2s;padding:.5rem 0;}
 .nav-tab.active{color:var(--gold);}
@@ -39,8 +29,6 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
 .tab-label{font-family:'Montserrat',sans-serif;font-size:.55rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;}
 .tab-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity .2s;margin-top:.1rem;}
 .nav-tab.active .tab-dot{opacity:1;}
-
-/* HOME */
 #page-home{padding:0;}
 .home-hero{min-height:calc(100vh - var(--nav-h) - var(--bottom-h));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem;position:relative;overflow:hidden;}
 .home-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(184,150,78,.1) 0%,transparent 65%);pointer-events:none;}
@@ -52,15 +40,12 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
 .home-hero p{font-size:.88rem;color:var(--muted);margin-bottom:2rem;line-height:1.7;font-weight:300;}
 .hero-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
 .btn-gold{background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;padding:.75rem 1.6rem;border-radius:3px;border:none;cursor:pointer;}
-.btn-gold:active{opacity:.85;}
 .btn-ghost{border:1px solid rgba(184,150,78,.5);color:var(--gold2);background:transparent;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;padding:.75rem 1.6rem;border-radius:3px;cursor:pointer;}
-
 .home-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .stat{padding:1.2rem .5rem;text-align:center;border-right:1px solid var(--border);}
 .stat:last-child{border-right:none;}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--gold);line-height:1;}
 .stat-label{font-size:.56rem;color:var(--muted);margin-top:.3rem;font-weight:500;}
-
 .home-cards{padding:1.5rem 1.2rem;}
 .home-cards h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:1rem;}
 .home-cards h2 em{font-style:italic;color:var(--gold2);}
@@ -72,16 +57,12 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
 .quick-card h3{font-size:.82rem;font-weight:700;margin-bottom:.3rem;}
 .quick-card p{font-size:.72rem;color:var(--muted);font-weight:300;line-height:1.5;}
 .quick-arrow{position:absolute;bottom:.8rem;right:.8rem;color:var(--gold);font-size:.8rem;opacity:.6;}
-
-/* SHARED */
 .page-header{padding:1.5rem 0 1rem;border-bottom:1px solid var(--border);margin-bottom:1.5rem;}
 .eyebrow{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
 .page-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;line-height:1.2;}
 .page-title em{font-style:italic;color:var(--gold2);}
 .section-h2{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin:1.5rem 0 .8rem;display:flex;align-items:center;gap:.6rem;}
 .section-h2::after{content:'';flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);}
-
-/* BRAND */
 .brand-visual{background:linear-gradient(135deg,rgba(184,150,78,.08),rgba(184,150,78,.02));border:1px solid var(--border);border-radius:12px;padding:2rem;text-align:center;margin-bottom:1.5rem;}
 .brand-globe{font-size:3.5rem;margin-bottom:.8rem;display:block;}
 .brand-visual h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--gold2);margin-bottom:.5rem;}
@@ -95,8 +76,6 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
 .pillar-icon-sm{font-size:1.3rem;margin-top:.1rem;}
 .pillar-text h4{font-size:.9rem;font-weight:700;margin-bottom:.3rem;}
 .pillar-text p{font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.6;}
-
-/* PARTNER */
 .partner-cards{display:flex;flex-direction:column;gap:1rem;margin-top:1rem;}
 .partner-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;position:relative;overflow:hidden;}
 .partner-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold3),transparent);}
@@ -108,9 +87,8 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
 .partner-monthly{font-size:.75rem;color:var(--muted);margin:.3rem 0 1rem;}
 .feat-list{list-style:none;}
 .feat-list li{font-size:.8rem;color:rgba(232,236,244,.65);padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:.6rem;}
-.feat-list li::before{content:'→';color:var(--gold);font-size:.7rem;flex-shrink:0;}
+.feat-list li::before{content:'rightarrow';color:var(--gold);font-size:.7rem;flex-shrink:0;}
 .apply-btn{width:100%;margin-top:1.2rem;background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;padding:.85rem;border-radius:8px;border:none;cursor:pointer;}
-.apply-btn:active{opacity:.85;}
 .apply-btn.outline{background:transparent;border:1px solid var(--gold);color:var(--gold);}
 .flow-list{margin-top:1.5rem;}
 .flow-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;position:relative;}
@@ -119,8 +97,6 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
 .flow-dot2{width:22px;height:22px;border-radius:50%;border:2px solid var(--gold);background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:.55rem;font-weight:700;color:var(--gold);}
 .flow-item h4{font-size:.9rem;font-weight:700;margin-bottom:.3rem;}
 .flow-item p{font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.6;}
-
-/* SERVICES */
 .svc-list{display:flex;flex-direction:column;gap:.8rem;margin-top:1rem;}
 .svc-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;cursor:pointer;position:relative;overflow:hidden;}
 .svc-item:active{background:rgba(184,150,78,.06);}
@@ -132,8 +108,6 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
 .now{background:rgba(184,150,78,.15);color:var(--gold);}
 .soon{background:rgba(100,120,160,.15);color:#7899cc;}
 .svc-arrow{position:absolute;right:1rem;top:50%;transform:translateY(-50%);color:var(--gold);opacity:.4;font-size:.9rem;}
-
-/* APPLY */
 .apply-info-box{background:linear-gradient(135deg,rgba(184,150,78,.08),rgba(184,150,78,.02));border:1px solid var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;}
 .apply-info-box p{font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:.8rem;}
 .contact-row{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:rgba(232,236,244,.7);margin-bottom:.5rem;}
@@ -148,7 +122,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--gold);background:rgba
 select option{background:#111e2e;}
 textarea{min-height:100px;resize:none;}
 .form-submit-btn{width:100%;background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:2px;text-transform:uppercase;padding:1rem;border-radius:10px;border:none;cursor:pointer;margin-top:.5rem;}
-.form-submit-btn:active{opacity:.85;}
 #formMsg{text-align:center;font-size:.85rem;color:var(--gold);margin-top:.5rem;display:none;}
 .footer-bar{margin-top:2.5rem;padding:1.5rem 0;border-top:1px solid var(--border);text-align:center;}
 </style>
@@ -157,12 +130,11 @@ textarea{min-height:100px;resize:none;}
 
 <nav class="top-nav">
   <div class="top-logo">RUTA <span>GLOBAL</span></div>
-  <button class="top-apply" onclick="goPage('apply')">파트너 신청</button>
+  <button class="top-apply" id="btn-top-apply">파트너 신청</button>
 </nav>
 
 <div class="pages">
 
-  <!-- 홈 -->
   <div class="page active" id="page-home">
     <div class="home-hero">
       <svg class="hero-bg-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
@@ -175,8 +147,8 @@ textarea{min-height:100px;resize:none;}
       <h1>세계를 향한<br><em>비즈니스의 길</em>을<br>만드는 기업</h1>
       <p>수출입, 물류, 유통, 온라인 비즈니스까지<br>하나의 흐름으로 연결합니다</p>
       <div class="hero-btns">
-        <button class="btn-gold" onclick="goPage('apply')">파트너 신청하기</button>
-        <button class="btn-ghost" onclick="goPage('brand')">브랜드 스토리</button>
+        <button class="btn-gold" id="btn-hero-apply">파트너 신청하기</button>
+        <button class="btn-ghost" id="btn-hero-brand">브랜드 스토리</button>
       </div>
     </div>
     <div class="home-stats">
@@ -188,18 +160,17 @@ textarea{min-height:100px;resize:none;}
     <div class="home-cards">
       <h2>바로 <em>시작하기</em></h2>
       <div class="quick-grid">
-        <div class="quick-card" onclick="goPage('brand')"><span class="quick-icon">🌐</span><h3>브랜드 스토리</h3><p>루타글로벌의 비전을 만나보세요</p><span class="quick-arrow">›</span></div>
-        <div class="quick-card" onclick="goPage('partner')"><span class="quick-icon">🤝</span><h3>파트너십</h3><p>대리점·딜러 구조 안내</p><span class="quick-arrow">›</span></div>
-        <div class="quick-card" onclick="goPage('services')"><span class="quick-icon">🛒</span><h3>서비스</h3><p>원스톱 비즈니스 플랜</p><span class="quick-arrow">›</span></div>
-        <div class="quick-card" onclick="goPage('apply')"><span class="quick-icon">📋</span><h3>신청하기</h3><p>지금 바로 파트너 신청</p><span class="quick-arrow">›</span></div>
+        <div class="quick-card" id="qc-brand"><span class="quick-icon">&#127758;</span><h3>브랜드 스토리</h3><p>루타글로벌의 비전을 만나보세요</p><span class="quick-arrow">&#8250;</span></div>
+        <div class="quick-card" id="qc-partner"><span class="quick-icon">&#129309;</span><h3>파트너십</h3><p>대리점·딜러 구조 안내</p><span class="quick-arrow">&#8250;</span></div>
+        <div class="quick-card" id="qc-services"><span class="quick-icon">&#128722;</span><h3>서비스</h3><p>원스톱 비즈니스 플랜</p><span class="quick-arrow">&#8250;</span></div>
+        <div class="quick-card" id="qc-apply"><span class="quick-icon">&#128203;</span><h3>신청하기</h3><p>지금 바로 파트너 신청</p><span class="quick-arrow">&#8250;</span></div>
       </div>
     </div>
   </div>
 
-  <!-- 브랜드 -->
   <div class="page" id="page-brand">
     <div class="page-header"><div class="eyebrow">Brand Story</div><div class="page-title">루타글로벌의<br><em>비전과 이야기</em></div></div>
-    <div class="brand-visual"><span class="brand-globe">🌐</span><h3>"세계를 향한 비즈니스의 길을 만드는 기업"</h3><p>Ruta — 길(Route)을 뜻하는 이름처럼<br>사업이 자연스럽게 시장으로 흘러가도록 연결합니다</p></div>
+    <div class="brand-visual"><span class="brand-globe">&#127758;</span><h3>"세계를 향한 비즈니스의 길을 만드는 기업"</h3><p>Ruta — 길(Route)을 뜻하는 이름처럼<br>사업이 자연스럽게 시장으로 흘러가도록 연결합니다</p></div>
     <div class="brand-story">
       <p>루타글로벌은 국내 시장에 머무르지 않고 더 넓은 유통과 무역의 흐름을 연결하는 기업으로 출발합니다.</p>
       <div class="brand-quote"><p>"좋은 상품을 찾고, 적합한 판매 구조를 만들고,<br>필요한 물류와 유통 시스템을 더해<br>사업이 자연스럽게 시장으로 흘러가도록<br>길을 만드는 것이 루타글로벌의 역할입니다."</p></div>
@@ -208,19 +179,18 @@ textarea{min-height:100px;resize:none;}
     </div>
     <div class="section-h2">핵심 4가지 흐름</div>
     <div>
-      <div class="pillar-item"><div class="pillar-num-sm">01</div><div class="pillar-icon-sm">🛳️</div><div class="pillar-text"><h4>수출입 & 무역</h4><p>해외 시장으로 향하는 수출입 프로세스를 체계적으로 설계하고 글로벌 네트워크를 연결합니다.</p></div></div>
-      <div class="pillar-item"><div class="pillar-num-sm">02</div><div class="pillar-icon-sm">🚚</div><div class="pillar-text"><h4>물류 & 유통</h4><p>국내외 물류 3PL 시스템으로 효율적인 배송과 재고 관리를 지원합니다.</p></div></div>
-      <div class="pillar-item"><div class="pillar-num-sm">03</div><div class="pillar-icon-sm">🛒</div><div class="pillar-text"><h4>온라인 비즈니스</h4><p>쇼핑몰 분양, PG 결제 연동, 온라인 마케팅까지 온라인 사업의 전 과정을 원스톱으로 지원합니다.</p></div></div>
-      <div class="pillar-item"><div class="pillar-num-sm">04</div><div class="pillar-icon-sm">📈</div><div class="pillar-text"><h4>비즈니스 컨설팅</h4><p>세무, 법인 설립, 정부지원금, AI 교육까지 사업 성장을 위한 종합 지원을 제공합니다.</p></div></div>
+      <div class="pillar-item"><div class="pillar-num-sm">01</div><div class="pillar-icon-sm">&#128739;</div><div class="pillar-text"><h4>수출입 &amp; 무역</h4><p>해외 시장으로 향하는 수출입 프로세스를 체계적으로 설계하고 글로벌 네트워크를 연결합니다.</p></div></div>
+      <div class="pillar-item"><div class="pillar-num-sm">02</div><div class="pillar-icon-sm">&#128666;</div><div class="pillar-text"><h4>물류 &amp; 유통</h4><p>국내외 물류 3PL 시스템으로 효율적인 배송과 재고 관리를 지원합니다.</p></div></div>
+      <div class="pillar-item"><div class="pillar-num-sm">03</div><div class="pillar-icon-sm">&#128722;</div><div class="pillar-text"><h4>온라인 비즈니스</h4><p>쇼핑몰 분양, PG 결제 연동, 온라인 마케팅까지 온라인 사업의 전 과정을 원스톱으로 지원합니다.</p></div></div>
+      <div class="pillar-item"><div class="pillar-num-sm">04</div><div class="pillar-icon-sm">&#128200;</div><div class="pillar-text"><h4>비즈니스 컨설팅</h4><p>세무, 법인 설립, 정부지원금, AI 교육까지 사업 성장을 위한 종합 지원을 제공합니다.</p></div></div>
     </div>
     <div style="height:1.5rem;"></div>
-    <button class="btn-gold" style="width:100%" onclick="goPage('apply')">파트너 신청하기</button>
+    <button class="btn-gold" style="width:100%" id="btn-brand-apply">파트너 신청하기</button>
     <div style="height:1rem;"></div>
   </div>
 
-  <!-- 파트너십 -->
   <div class="page" id="page-partner">
-    <div class="page-header"><div class="eyebrow">Partnership</div><div class="page-title">대리점 &<br><em>딜러 파트너십</em></div></div>
+    <div class="page-header"><div class="eyebrow">Partnership</div><div class="page-title">대리점 &amp;<br><em>딜러 파트너십</em></div></div>
     <div class="partner-cards">
       <div class="partner-card">
         <span class="partner-tag">Agency · 대리점 파트너</span>
@@ -231,7 +201,7 @@ textarea{min-height:100px;resize:none;}
         <ul class="feat-list">
           <li>PG 온라인 결제 시스템 연동</li><li>전용 쇼핑몰 URL 제공</li><li>상품 등록 관리자 페이지</li><li>딜러 모집 및 관리 권한</li><li>주 단위 판매 정산</li><li>영업 교육 및 지원 제공</li>
         </ul>
-        <button class="apply-btn" onclick="goPage('apply')">대리점 신청하기</button>
+        <button class="apply-btn" id="btn-agency-apply">대리점 신청하기</button>
       </div>
       <div class="partner-card">
         <span class="partner-tag">Dealer · 딜러 파트너</span>
@@ -242,7 +212,7 @@ textarea{min-height:100px;resize:none;}
         <ul class="feat-list">
           <li>전용 딜러 링크 즉시 발급</li><li>SNS · 카카오톡 공유 영업</li><li>판매 수수료 수익</li><li>추가 진입 장벽 없음</li><li>대리점 전환 가능</li>
         </ul>
-        <button class="apply-btn outline" onclick="goPage('apply')">딜러 신청하기</button>
+        <button class="apply-btn outline" id="btn-dealer-apply">딜러 신청하기</button>
       </div>
     </div>
     <div class="section-h2">파트너 시작 4단계</div>
@@ -255,28 +225,26 @@ textarea{min-height:100px;resize:none;}
     <div style="height:1rem;"></div>
   </div>
 
-  <!-- 서비스 -->
   <div class="page" id="page-services">
     <div class="page-header"><div class="eyebrow">One-Stop Plan</div><div class="page-title">루타글로벌<br><em>원스톱 서비스</em></div></div>
     <div class="svc-list">
-      <div class="svc-item" onclick="goPage('apply')"><div class="svc-item-icon">🛒</div><div class="svc-item-body"><h3>쇼핑몰 분양 & PG 연동</h3><p>전용 쇼핑몰 제작부터 카드 결제 시스템 연동까지. 비사업자도 온라인 판매 시작 가능.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">›</span></div>
-      <div class="svc-item" onclick="goPage('apply')"><div class="svc-item-icon">💳</div><div class="svc-item-body"><h3>온라인 결제 시스템</h3><p>블로그 결제, 라이브방송 결제, 비사업자 결제까지 다양한 채널 통합 지원.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">›</span></div>
-      <div class="svc-item" onclick="goPage('apply')"><div class="svc-item-icon">📊</div><div class="svc-item-body"><h3>세무 컨설팅 연계</h3><p>개인·법인 사업자 신규 등록, 기장료 연계, 종합소득세·법인세 신고 지원.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">›</span></div>
-      <div class="svc-item" onclick="goPage('apply')"><div class="svc-item-icon">🤖</div><div class="svc-item-body"><h3>AI 교육 강의</h3><p>대리점 운영 교육, 온라인 홍보 전략, AI 활용 비즈니스 교육 과정 운영.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">›</span></div>
-      <div class="svc-item"><div class="svc-item-icon">🏛️</div><div class="svc-item-body"><h3>정부지원금 컨설팅</h3><p>사업자 대상 정부 지원금 및 대출 컨설팅. 전문가 연결 서비스.</p><span class="svc-badge soon">준비중</span></div></div>
-      <div class="svc-item"><div class="svc-item-icon">🌐</div><div class="svc-item-body"><h3>무역 소싱 & 3PL 물류</h3><p>해외 소싱부터 국내외 물류 아웃소싱까지 글로벌 인프라 지원.</p><span class="svc-badge soon">준비중</span></div></div>
+      <div class="svc-item" id="svc1"><div class="svc-item-icon">&#128722;</div><div class="svc-item-body"><h3>쇼핑몰 분양 &amp; PG 연동</h3><p>전용 쇼핑몰 제작부터 카드 결제 시스템 연동까지. 비사업자도 온라인 판매 시작 가능.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">&#8250;</span></div>
+      <div class="svc-item" id="svc2"><div class="svc-item-icon">&#128179;</div><div class="svc-item-body"><h3>온라인 결제 시스템</h3><p>블로그 결제, 라이브방송 결제, 비사업자 결제까지 다양한 채널 통합 지원.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">&#8250;</span></div>
+      <div class="svc-item" id="svc3"><div class="svc-item-icon">&#128202;</div><div class="svc-item-body"><h3>세무 컨설팅 연계</h3><p>개인·법인 사업자 신규 등록, 기장료 연계, 종합소득세·법인세 신고 지원.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">&#8250;</span></div>
+      <div class="svc-item" id="svc4"><div class="svc-item-icon">&#129302;</div><div class="svc-item-body"><h3>AI 교육 강의</h3><p>대리점 운영 교육, 온라인 홍보 전략, AI 활용 비즈니스 교육 과정 운영.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">&#8250;</span></div>
+      <div class="svc-item"><div class="svc-item-icon">&#127963;</div><div class="svc-item-body"><h3>정부지원금 컨설팅</h3><p>사업자 대상 정부 지원금 및 대출 컨설팅. 전문가 연결 서비스.</p><span class="svc-badge soon">준비중</span></div></div>
+      <div class="svc-item"><div class="svc-item-icon">&#127760;</div><div class="svc-item-body"><h3>무역 소싱 &amp; 3PL 물류</h3><p>해외 소싱부터 국내외 물류 아웃소싱까지 글로벌 인프라 지원.</p><span class="svc-badge soon">준비중</span></div></div>
     </div>
     <div style="height:1rem;"></div>
   </div>
 
-  <!-- 신청 -->
   <div class="page" id="page-apply">
     <div class="page-header"><div class="eyebrow">Apply Now</div><div class="page-title">파트너<br><em>신청하기</em></div></div>
     <div class="apply-info-box">
       <p>신청서를 제출하시면 담당자가 24시간 내 연락드립니다. 의정부·양주 지역을 중심으로 전국 파트너를 모집합니다.</p>
-      <div class="contact-row">📞 <a href="tel:010-8653-4054">010-8653-4054</a></div>
-      <div class="contact-row">📍 경기도 의정부시</div>
-      <div class="contact-row">⏰ 평일 09:00 – 18:00</div>
+      <div class="contact-row">&#128222; <a href="tel:010-8653-4054">010-8653-4054</a></div>
+      <div class="contact-row">&#128205; 경기도 의정부시</div>
+      <div class="contact-row">&#9200; 평일 09:00 – 18:00</div>
     </div>
     <form class="apply-form" id="applyForm">
       <div class="form-row">
@@ -299,7 +267,7 @@ textarea{min-height:100px;resize:none;}
       </div>
       <div class="form-group"><label>문의 내용</label><textarea name="message" placeholder="궁금하신 점을 자유롭게 작성해주세요."></textarea></div>
       <button type="submit" class="form-submit-btn">신청서 제출하기</button>
-      <div id="formMsg">✅ 신청 완료! 곧 연락드리겠습니다.</div>
+      <div id="formMsg">&#9989; 신청 완료! 곧 연락드리겠습니다.</div>
     </form>
     <div class="footer-bar">
       <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:.3rem;">RUTA <span style="color:var(--gold)">GLOBAL</span></div>
@@ -308,13 +276,13 @@ textarea{min-height:100px;resize:none;}
         <div style="font-size:.75rem;font-weight:700;color:rgba(232,236,244,.5);margin-bottom:.6rem;font-family:'Montserrat',sans-serif;letter-spacing:1px;">운영사</div>
         <div style="font-size:.78rem;color:rgba(232,236,244,.35);line-height:2;">
           <div><b style="color:rgba(232,236,244,.55)">(주)비에스컴퍼니</b></div>
-          <div>📍 경기도 의정부시 호국로 1195-1, 4층</div>
-          <div>🏢 사업자번호 : 761-87-02647</div>
-          <div>📦 통신판매업 : 제2023-의정부흥선-0457호</div>
-          <div>✉️ <a href="/cdn-cgi/l/email-protection#533b2a233c60606363133d322536217d303c3e" style="color:var(--gold2);text-decoration:none;"><span class="__cf_email__" data-cfemail="bfd7c6cfd08c8c8f8fffd1dec9dacd91dcd0d2">[email&#160;protected]</span></a></div>
+          <div>&#128205; 경기도 의정부시 호국로 1195-1, 4층</div>
+          <div>&#127970; 사업자번호 : 761-87-02647</div>
+          <div>&#128230; 통신판매업 : 제2023-의정부흥선-0457호</div>
+          <div>&#9993; hypo3300&#64;naver.com</div>
         </div>
       </div>
-      <div style="font-size:.68rem;color:rgba(232,236,244,.18);margin-top:1rem;text-align:center;">© 2025 루타글로벌 · (주)비에스컴퍼니. All rights reserved.</div>
+      <div style="font-size:.68rem;color:rgba(232,236,244,.18);margin-top:1rem;text-align:center;">&#169; 2025 루타글로벌 · (주)비에스컴퍼니. All rights reserved.</div>
     </div>
     <div style="height:1rem;"></div>
   </div>
@@ -322,34 +290,77 @@ textarea{min-height:100px;resize:none;}
 </div>
 
 <nav class="bottom-nav">
-  <button class="nav-tab active" id="tab-home" onclick="goPage('home')"><span class="tab-icon">🏠</span><span class="tab-label">홈</span><div class="tab-dot"></div></button>
-  <button class="nav-tab" id="tab-brand" onclick="goPage('brand')"><span class="tab-icon">🌐</span><span class="tab-label">브랜드</span><div class="tab-dot"></div></button>
-  <button class="nav-tab" id="tab-partner" onclick="goPage('partner')"><span class="tab-icon">🤝</span><span class="tab-label">파트너십</span><div class="tab-dot"></div></button>
-  <button class="nav-tab" id="tab-services" onclick="goPage('services')"><span class="tab-icon">📋</span><span class="tab-label">서비스</span><div class="tab-dot"></div></button>
-  <button class="nav-tab" id="tab-apply" onclick="goPage('apply')"><span class="tab-icon">✍️</span><span class="tab-label">신청</span><div class="tab-dot"></div></button>
+  <button class="nav-tab active" id="tab-home"><span class="tab-icon">&#127968;</span><span class="tab-label">홈</span><div class="tab-dot"></div></button>
+  <button class="nav-tab" id="tab-brand"><span class="tab-icon">&#127758;</span><span class="tab-label">브랜드</span><div class="tab-dot"></div></button>
+  <button class="nav-tab" id="tab-partner"><span class="tab-icon">&#129309;</span><span class="tab-label">파트너십</span><div class="tab-dot"></div></button>
+  <button class="nav-tab" id="tab-services"><span class="tab-icon">&#128203;</span><span class="tab-label">서비스</span><div class="tab-dot"></div></button>
+  <button class="nav-tab" id="tab-apply"><span class="tab-icon">&#9997;</span><span class="tab-label">신청</span><div class="tab-dot"></div></button>
 </nav>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-let current = 'home';
-function goPage(name){
-  if(name===current) return;
-  const oldPage = document.getElementById('page-'+current);
-  const newPage = document.getElementById('page-'+name);
+<script>
+var current = 'home';
+
+function goPage(name) {
+  if (name === current) return;
+  var oldPage = document.getElementById('page-' + current);
+  var newPage = document.getElementById('page-' + name);
   oldPage.classList.add('exit');
-  setTimeout(()=>{ oldPage.classList.remove('active','exit'); oldPage.scrollTop=0; },320);
+  setTimeout(function() {
+    oldPage.classList.remove('active', 'exit');
+    oldPage.scrollTop = 0;
+  }, 320);
   newPage.classList.add('active');
-  document.getElementById('tab-'+current).classList.remove('active');
-  document.getElementById('tab-'+name).classList.add('active');
-  current=name;
+  document.getElementById('tab-' + current).classList.remove('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  current = name;
 }
 
-const SCRIPT_URL='https://script.google.com/macros/s/AKfycbyuT-5DZ5q5rcM79BvCc5hnWkUbHisBCDOi1Z3m9u9Yh5ieTOA7aFWGxUHQseyeBn-DJQ/exec';
-document.getElementById('applyForm').addEventListener('submit',async function(e){
+document.getElementById('tab-home').addEventListener('click', function(){ goPage('home'); });
+document.getElementById('tab-brand').addEventListener('click', function(){ goPage('brand'); });
+document.getElementById('tab-partner').addEventListener('click', function(){ goPage('partner'); });
+document.getElementById('tab-services').addEventListener('click', function(){ goPage('services'); });
+document.getElementById('tab-apply').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('btn-top-apply').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('btn-hero-apply').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('btn-hero-brand').addEventListener('click', function(){ goPage('brand'); });
+document.getElementById('btn-brand-apply').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('btn-agency-apply').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('btn-dealer-apply').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('qc-brand').addEventListener('click', function(){ goPage('brand'); });
+document.getElementById('qc-partner').addEventListener('click', function(){ goPage('partner'); });
+document.getElementById('qc-services').addEventListener('click', function(){ goPage('services'); });
+document.getElementById('qc-apply').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('svc1').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('svc2').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('svc3').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('svc4').addEventListener('click', function(){ goPage('apply'); });
+
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyuT-5DZ5q5rcM79BvCc5hnWkUbHisBCDOi1Z3m9u9Yh5ieTOA7aFWGxUHQseyeBn-DJQ/exec';
+
+document.getElementById('applyForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  const btn=this.querySelector('button[type=submit]');
-  const msg=document.getElementById('formMsg');
-  btn.textContent='제출 중...'; btn.disabled=true;
-  const data=Object.fromEntries(new FormData(this));
-  data.timestamp=new Date().toLocaleString('ko-KR');
-  try{
-    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+  var btn = this.querySelector('button[type=submit]');
+  var msg = document.getElementById('formMsg');
+  btn.textContent = '제출 중...';
+  btn.disabled = true;
+  var data = Object.fromEntries(new FormData(this));
+  data.timestamp = new Date().toLocaleString('ko-KR');
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(function() {
+    msg.style.display = 'block';
+    document.getElementById('applyForm').reset();
+    btn.textContent = '신청서 제출하기';
+    btn.disabled = false;
+  }).catch(function() {
+    alert('오류가 발생했습니다. 직접 연락 부탁드립니다: 010-8653-4054');
+    btn.textContent = '신청서 제출하기';
+    btn.disabled = false;
+  });
+});
+</script>
+</body>
+</html>
