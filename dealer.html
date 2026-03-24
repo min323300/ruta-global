@@ -20,13 +20,10 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
 .nav-apply-btn{background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:1.5px;padding:.38rem .9rem;border-radius:3px;border:none;cursor:pointer;text-transform:uppercase;}
 
 /* LOADING */
-.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:1rem;}
-.loading-ring{width:40px;height:40px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading p{font-size:.85rem;color:var(--muted);font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase;}
+
 
 /* CONTENT */
-.content{display:none;padding-top:var(--nav-h);}
+.content{display:block;padding-top:var(--nav-h);}
 
 /* HERO */
 .hero{background:linear-gradient(135deg,#141c2b 0%,#1a2238 50%,#141c2b 100%);padding:3rem 1.5rem 2.5rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
@@ -99,7 +96,7 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
 .faq-q{padding:1rem 1.2rem;font-size:.88rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
 .faq-q::after{content:'﹢';color:var(--gold);font-size:1.1rem;flex-shrink:0;transition:transform .2s;}
 .faq-item.open .faq-q::after{content:'﹣';}
-.faq-a{display:none;padding:.8rem 1.2rem 1rem;font-size:.82rem;color:var(--muted2);font-weight:300;line-height:1.8;border-top:1px solid rgba(255,255,255,.05);}
+.faq-a{display:block;padding:.8rem 1.2rem 1rem;font-size:.82rem;color:var(--muted2);font-weight:300;line-height:1.8;border-top:1px solid rgba(255,255,255,.05);}
 .faq-item.open .faq-a{display:block;}
 
 /* CTA */
@@ -134,14 +131,10 @@ body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-ser
   </div>
 </nav>
 
-<!-- 로딩 -->
-<div class="loading" id="loading">
-  <div class="loading-ring"></div>
-  <p>Loading...</p>
-</div>
+
 
 <!-- 콘텐츠 -->
-<div class="content" id="content">
+<div id="content">
 
   <!-- HERO -->
   <div class="hero" id="hero-section">
@@ -268,20 +261,6 @@ const API_URL = 'https://script.google.com/macros/s/AKfycbyJKvnsXrmm3Y96Tnl50l_p
 // ══════════════════════════════════════════
 // 데이터 로드 함수
 // ══════════════════════════════════════════
-async function loadData() {
-  try {
-    const res = await fetch(API_URL + '?action=getAll');
-    const data = await res.json();
-    renderAll(data);
-  } catch(e) {
-    // API 연결 전 기본 데이터 표시
-    renderAll(DEFAULT_DATA);
-  } finally {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-  }
-}
-
 // ══════════════════════════════════════════
 // 렌더 함수들
 // ══════════════════════════════════════════
@@ -398,7 +377,7 @@ const DEFAULT_DATA = {
     {platform:'쿠팡 마켓플레이스', fee:'4~10.9%', cycle:'구매확정 후 40~50일', total:'약 8~13%', highlight:false},
     {platform:'11번가', fee:'7~12%', cycle:'구매확정 후 1~2일', total:'약 9~14%', highlight:false},
     {platform:'G마켓/옥션', fee:'7~12%', cycle:'구매확정 후 8일', total:'약 9~14%', highlight:false},
-    {platform:'🏪 담누리마켓', fee:'본사 2.0%', cycle:'PG 정산 후 즉시', total:'총 4.5%', highlight:true}
+    {platform:'🏪 담누리마켓', fee:'본사 2.0% + 카드 0.1%', cycle:'PG 정산 후 즉시', total:'총 4.5%', highlight:true}
   ],
   compares: [
     {name:'네이버', amount:'약 93만원', label:'수수료 약 7%', best:false},
@@ -421,8 +400,8 @@ const DEFAULT_DATA = {
   simulations: [
     {case_title:'💼 Case 1 — 본사 상품만 판매 (월 매출 500만원)', rows:[
       {label:'월 매출', value:'5,000,000원', type:''},
-      {label:'PG 수수료 (2.5%)', value:'-125,000원', type:'minus'},
-      {label:'본사 마진 (2.0%)', value:'-100,000원', type:'minus'},
+      {label:'카드 수수료 (0.1%)', value:'-125,000원', type:'minus'},
+      {label:'PG+본사 수수료 (4.4%)', value:'-100,000원', type:'minus'},
       {label:'대리점 실수령액', value:'4,775,000원', type:'total'}
     ]},
     {case_title:'🚀 Case 2 — 본사 + 내 상품 혼합 (월 매출 500만원)', rows:[
