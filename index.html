@@ -2,1094 +2,360 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>루타글로벌 | 세계를 향한 비즈니스의 길을 만드는 기업</title>
-<meta name="description" content="수출입, 물류, 유통, 온라인 비즈니스까지 각기 다른 요소들을 하나의 흐름으로 이어 누구나 더 넓은 시장으로 나아갈 수 있도록 돕는 회사, 루타글로벌"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>루타글로벌 | Ruta Global</title>
+<meta name="description" content="세계를 향한 비즈니스의 길을 만드는 기업"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0d1520;
-  --ink2:#111e2e;
-  --gold:#b8964e;
-  --gold2:#d4af6a;
-  --gold3:#f0d090;
-  --cream:#f5f0e8;
-  --cream2:#ede5d4;
-  --text:#1a2535;
-  --muted:#8a9ab5;
-  --border:rgba(184,150,78,.2);
-  --border2:rgba(184,150,78,.08);
-  --card:rgba(13,21,32,.7);
+  --ink:#0d1520;--ink2:#111e2e;
+  --gold:#b8964e;--gold2:#d4af6a;--gold3:#f0d090;
+  --text:#e8ecf4;--muted:#7a8ba8;
+  --border:rgba(184,150,78,.2);--card:rgba(255,255,255,.04);
+  --nav-h:60px;--bottom-h:64px;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--ink);
-  color:#e8ecf4;
-  font-family:'Noto Sans KR',sans-serif;
-  overflow-x:hidden;
-  line-height:1.75;
-}
-::selection{background:var(--gold);color:var(--ink);}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;overflow:hidden;}
+body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 
-/* ──────── CURSOR ──────── */
-.cursor{
-  position:fixed;width:10px;height:10px;
-  border-radius:50%;background:var(--gold);
-  pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:transform .1s;
-  mix-blend-mode:difference;
-}
-.cursor-ring{
-  position:fixed;width:36px;height:36px;
-  border-radius:50%;border:1px solid rgba(184,150,78,.5);
-  pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);
-  transition:transform .18s,width .2s,height .2s;
-}
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);background:rgba(13,21,32,.97);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.2rem;backdrop-filter:blur(12px);}
+.top-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;letter-spacing:1.5px;color:#fff;}
+.top-logo span{color:var(--gold);}
+.top-apply{background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:1.5px;padding:.4rem 1rem;border-radius:3px;border:none;cursor:pointer;text-transform:uppercase;}
 
-/* ──────── NAV ──────── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  padding:0 6%;
-  display:flex;align-items:center;justify-content:space-between;
-  height:70px;
-  transition:background .4s,backdrop-filter .4s;
-}
-nav.scrolled{
-  background:rgba(13,21,32,.96);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-}
-.nav-logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.55rem;
-  font-weight:600;
-  letter-spacing:1.5px;
-  color:#fff;
-}
-.nav-logo span{color:var(--gold);}
-.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
-.nav-links a{
-  color:rgba(232,236,244,.65);
-  text-decoration:none;
-  font-size:.8rem;
-  font-weight:500;
-  font-family:'Montserrat',sans-serif;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  transition:color .2s;
-}
-.nav-links a:hover{color:var(--gold);}
-.nav-apply{
-  background:transparent;
-  border:1px solid var(--gold);
-  color:var(--gold)!important;
-  padding:.45rem 1.3rem;
-  border-radius:2px;
-  transition:background .2s,color .2s!important;
-}
-.nav-apply:hover{background:var(--gold);color:var(--ink)!important;}
+.pages{position:fixed;top:var(--nav-h);left:0;right:0;bottom:var(--bottom-h);overflow:hidden;}
 
-/* ──────── HERO ──────── */
-.hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;
-  padding:120px 6% 80px;
-  position:relative;overflow:hidden;
-}
-/* animated route lines SVG bg */
-.hero-bg{position:absolute;inset:0;overflow:hidden;}
-.hero-bg svg{width:100%;height:100%;opacity:.18;}
-.route-line{
-  stroke:var(--gold);
-  stroke-width:1;
-  fill:none;
-  stroke-dasharray:800;
-  stroke-dashoffset:800;
-  animation:drawRoute 3.5s ease forwards;
-}
-.route-line:nth-child(2){animation-delay:.6s;stroke:#d4af6a;stroke-dasharray:600;stroke-dashoffset:600;}
-.route-line:nth-child(3){animation-delay:1.2s;stroke-dasharray:1000;stroke-dashoffset:1000;}
-.dot{
-  fill:var(--gold);
-  opacity:0;
-  animation:dotPop .4s ease forwards;
-}
-.dot:nth-child(4){animation-delay:3s;}
-.dot:nth-child(5){animation-delay:3.2s;}
-.dot:nth-child(6){animation-delay:3.4s;}
-@keyframes drawRoute{to{stroke-dashoffset:0;}}
-@keyframes dotPop{0%{opacity:0;r:0}100%{opacity:.9;r:4}}
+.page{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;transform:translateX(30px);pointer-events:none;transition:opacity .32s ease,transform .32s ease;padding:1.5rem 1.2rem 2rem;}
+.page.active{opacity:1;transform:translateX(0);pointer-events:all;}
+.page.exit{opacity:0;transform:translateX(-30px);}
+.page::-webkit-scrollbar{display:none;}
+.page{-ms-overflow-style:none;scrollbar-width:none;}
 
-.hero-noise{
-  position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;
-  opacity:.5;
-}
-.hero-glow{
-  position:absolute;
-  width:700px;height:700px;
-  border-radius:50%;
-  background:radial-gradient(ellipse, rgba(184,150,78,.12) 0%, transparent 70%);
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  pointer-events:none;
-}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.7rem;
-  font-family:'Montserrat',sans-serif;
-  font-size:.68rem;font-weight:600;
-  letter-spacing:4px;text-transform:uppercase;
-  color:var(--gold);
-  margin-bottom:1.8rem;
-  opacity:0;
-  animation:fadeUp .8s ease .3s forwards;
-}
-.hero-eyebrow::before,.hero-eyebrow::after{
-  content:'';display:block;
-  width:36px;height:1px;background:var(--gold);opacity:.6;
-}
-.hero h1{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3rem,7.5vw,6.5rem);
-  font-weight:300;
-  line-height:1.12;
-  margin-bottom:1rem;
-  opacity:0;
-  animation:fadeUp .9s ease .5s forwards;
-}
-.hero h1 em{
-  font-style:italic;
-  color:var(--gold2);
-}
-.hero-sub{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.2rem,2.5vw,1.7rem);
-  font-weight:300;
-  color:rgba(232,236,244,.65);
-  margin-bottom:2.5rem;
-  letter-spacing:.5px;
-  opacity:0;
-  animation:fadeUp .9s ease .7s forwards;
-}
-.hero-btns{
-  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
-  opacity:0;
-  animation:fadeUp .9s ease .9s forwards;
-}
-.btn-gold{
-  background:var(--gold);
-  color:var(--ink);
-  font-family:'Montserrat',sans-serif;
-  font-weight:700;font-size:.8rem;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:.85rem 2.2rem;border-radius:2px;
-  text-decoration:none;border:none;cursor:pointer;
-  transition:transform .2s,box-shadow .2s;
-  display:inline-block;
-}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(184,150,78,.35);}
-.btn-ghost{
-  border:1px solid rgba(184,150,78,.5);
-  color:var(--gold2);
-  font-family:'Montserrat',sans-serif;
-  font-weight:600;font-size:.8rem;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:.85rem 2.2rem;border-radius:2px;
-  text-decoration:none;background:transparent;cursor:pointer;
-  transition:border-color .2s,background .2s;
-  display:inline-block;
-}
-.btn-ghost:hover{border-color:var(--gold);background:rgba(184,150,78,.08);}
-.hero-scroll{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  opacity:0;animation:fadeUp .8s ease 1.4s forwards;
-}
-.hero-scroll span{
-  font-family:'Montserrat',sans-serif;
-  font-size:.62rem;letter-spacing:3px;text-transform:uppercase;
-  color:var(--muted);
-}
-.scroll-bar{
-  width:1px;height:40px;
-  background:linear-gradient(to bottom,var(--gold),transparent);
-  animation:scrollPulse 2s infinite;
-}
-@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.5);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:200;height:var(--bottom-h);background:rgba(10,18,30,.98);border-top:1px solid var(--border);display:flex;backdrop-filter:blur(12px);padding-bottom:env(safe-area-inset-bottom);}
+.nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:color .2s;padding:.5rem 0;}
+.nav-tab.active{color:var(--gold);}
+.tab-icon{font-size:1.25rem;line-height:1;}
+.tab-label{font-family:'Montserrat',sans-serif;font-size:.55rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;}
+.tab-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity .2s;margin-top:.1rem;}
+.nav-tab.active .tab-dot{opacity:1;}
 
-/* ──────── BRAND STORY ──────── */
-.story{
-  padding:120px 6%;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6rem;
-  align-items:center;
-  position:relative;
-}
-.story::before{
-  content:'RUTA';
-  position:absolute;
-  right:-2%;top:50%;transform:translateY(-50%);
-  font-family:'Cormorant Garamond',serif;
-  font-size:20vw;font-weight:700;
-  color:rgba(184,150,78,.03);
-  pointer-events:none;
-  line-height:1;
-}
-.story-text .section-eyebrow{
-  font-family:'Montserrat',sans-serif;
-  font-size:.65rem;font-weight:600;
-  letter-spacing:4px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.2rem;
-}
-.story-text h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:400;
-  line-height:1.3;
-  margin-bottom:1.8rem;
-}
-.story-text h2 em{font-style:italic;color:var(--gold2);}
-.story-text p{
-  color:rgba(232,236,244,.65);
-  font-size:.92rem;
-  margin-bottom:1rem;
-  font-weight:300;
-}
-.story-text .quote{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.3rem;font-style:italic;
-  color:var(--gold2);
-  border-left:2px solid var(--gold);
-  padding-left:1.2rem;
-  margin:1.8rem 0;
-  line-height:1.5;
-}
-.story-visual{
-  position:relative;
-  display:flex;align-items:center;justify-content:center;
-}
-.globe-wrap{
-  position:relative;
-  width:380px;height:380px;
-}
-.globe-ring{
-  position:absolute;
-  border-radius:50%;
-  border:1px solid var(--border);
-  animation:spinRing linear infinite;
-}
-.ring1{inset:0;animation-duration:18s;}
-.ring2{inset:30px;border-style:dashed;animation-duration:28s;animation-direction:reverse;}
-.ring3{inset:70px;animation-duration:22s;border-color:rgba(184,150,78,.3);}
-@keyframes spinRing{from{transform:rotateZ(0deg) rotateX(65deg)}to{transform:rotateZ(360deg) rotateX(65deg)}}
-.globe-center{
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
-}
-.globe-icon{
-  font-size:4rem;
-  filter:drop-shadow(0 0 20px rgba(184,150,78,.4));
-}
-.globe-label{
-  position:absolute;
-  font-family:'Montserrat',sans-serif;
-  font-size:.62rem;font-weight:600;
-  letter-spacing:2px;text-transform:uppercase;
-  color:var(--gold);
-}
-.lbl-top{top:-5px;left:50%;transform:translateX(-50%);}
-.lbl-right{right:-25px;top:50%;transform:translateY(-50%) rotate(90deg);}
-.lbl-bottom{bottom:-5px;left:50%;transform:translateX(-50%);}
-.lbl-left{left:-25px;top:50%;transform:translateY(-50%) rotate(-90deg);}
-.connect-dot{
-  position:absolute;
-  width:8px;height:8px;border-radius:50%;
-  background:var(--gold);
-  box-shadow:0 0 10px var(--gold);
-  animation:pulseDot 2s infinite;
-}
-.cd1{top:15%;left:25%;}
-.cd2{top:30%;right:20%;}
-.cd3{bottom:20%;left:35%;}
-.cd4{bottom:30%;right:30%;}
-@keyframes pulseDot{0%,100%{box-shadow:0 0 6px var(--gold)}50%{box-shadow:0 0 18px var(--gold2)}}
+/* HOME */
+#page-home{padding:0;}
+.home-hero{min-height:calc(100vh - var(--nav-h) - var(--bottom-h));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem;position:relative;overflow:hidden;}
+.home-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(184,150,78,.1) 0%,transparent 65%);pointer-events:none;}
+.hero-bg-svg{position:absolute;inset:0;opacity:.15;pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
+.hero-badge::before,.hero-badge::after{content:'';display:block;width:24px;height:1px;background:var(--gold);opacity:.6;}
+.home-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,9vw,4rem);font-weight:300;line-height:1.18;margin-bottom:.8rem;}
+.home-hero h1 em{font-style:italic;color:var(--gold2);}
+.home-hero p{font-size:.88rem;color:var(--muted);margin-bottom:2rem;line-height:1.7;font-weight:300;}
+.hero-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
+.btn-gold{background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;padding:.75rem 1.6rem;border-radius:3px;border:none;cursor:pointer;}
+.btn-gold:active{opacity:.85;}
+.btn-ghost{border:1px solid rgba(184,150,78,.5);color:var(--gold2);background:transparent;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;padding:.75rem 1.6rem;border-radius:3px;cursor:pointer;}
 
-/* ──────── PILLARS ──────── */
-.pillars{
-  padding:100px 6%;
-  background:var(--ink2);
-  border-top:1px solid var(--border2);
-  border-bottom:1px solid var(--border2);
-}
-.section-header{text-align:center;margin-bottom:4rem;}
-.section-header .eyebrow{
-  font-family:'Montserrat',sans-serif;
-  font-size:.65rem;font-weight:600;
-  letter-spacing:4px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1rem;
-}
-.section-header h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,4vw,3rem);
-  font-weight:400;line-height:1.3;
-}
-.section-header h2 em{font-style:italic;color:var(--gold2);}
-.section-header p{color:rgba(232,236,244,.5);font-size:.9rem;margin-top:.8rem;font-weight:300;}
-.pillars-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:1.5px;
-  background:var(--border2);
-  border:1px solid var(--border2);
-}
-.pillar{
-  background:var(--ink);
-  padding:2.5rem 2rem;
-  position:relative;overflow:hidden;
-  transition:background .3s;
-  cursor:default;
-}
-.pillar:hover{background:rgba(184,150,78,.05);}
-.pillar::after{
-  content:'';
-  position:absolute;bottom:0;left:0;right:0;
-  height:2px;background:var(--gold);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .4s ease;
-}
-.pillar:hover::after{transform:scaleX(1);}
-.pillar-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:3.5rem;font-weight:300;
-  color:rgba(184,150,78,.2);
-  line-height:1;margin-bottom:.8rem;
-}
-.pillar-icon{font-size:1.8rem;margin-bottom:.8rem;display:block;}
-.pillar h3{
-  font-size:1.05rem;font-weight:700;
-  margin-bottom:.7rem;
-}
-.pillar p{font-size:.83rem;color:rgba(232,236,244,.55);font-weight:300;line-height:1.7;}
+.home-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stat{padding:1.2rem .5rem;text-align:center;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--gold);line-height:1;}
+.stat-label{font-size:.56rem;color:var(--muted);margin-top:.3rem;font-weight:500;}
 
-/* ──────── STRUCTURE ──────── */
-.structure{padding:100px 6%;position:relative;}
-.structure-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:2rem;max-width:900px;margin-top:3.5rem;
-}
-.struct-card{
-  border:1px solid var(--border);
-  border-radius:4px;
-  padding:2.5rem;
-  position:relative;overflow:hidden;
-  background:rgba(184,150,78,.03);
-  transition:transform .3s,border-color .3s,background .3s;
-}
-.struct-card:hover{
-  transform:translateY(-6px);
-  border-color:var(--gold);
-  background:rgba(184,150,78,.07);
-}
-.struct-card::before{
-  content:'';
-  position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--gold),var(--gold3),transparent);
-}
-.struct-tag{
-  font-family:'Montserrat',sans-serif;
-  font-size:.62rem;font-weight:700;
-  letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1rem;display:block;
-}
-.struct-card h3{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.9rem;font-weight:600;
-  margin-bottom:.4rem;
-}
-.struct-card p{font-size:.83rem;color:rgba(232,236,244,.55);margin-bottom:1.5rem;font-weight:300;}
-.struct-price{
-  font-family:'Cormorant Garamond',serif;
-  font-size:3rem;font-weight:600;color:var(--gold2);
-  line-height:1;margin-bottom:.3rem;
-}
-.struct-price sub{font-size:1rem;font-weight:300;color:var(--muted);}
-.struct-monthly{font-size:.78rem;color:var(--muted);margin-bottom:1.5rem;}
-.struct-features{list-style:none;}
-.struct-features li{
-  font-size:.82rem;color:rgba(232,236,244,.6);
-  padding:.4rem 0;
-  border-bottom:1px solid rgba(255,255,255,.04);
-  display:flex;align-items:center;gap:.6rem;
-}
-.struct-features li::before{
-  content:'→';color:var(--gold);font-size:.75rem;flex-shrink:0;
-}
+.home-cards{padding:1.5rem 1.2rem;}
+.home-cards h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:1rem;}
+.home-cards h2 em{font-style:italic;color:var(--gold2);}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+.quick-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1rem;cursor:pointer;transition:transform .2s;position:relative;overflow:hidden;}
+.quick-card:active{transform:scale(.97);}
+.quick-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);}
+.quick-icon{font-size:1.6rem;margin-bottom:.5rem;display:block;}
+.quick-card h3{font-size:.82rem;font-weight:700;margin-bottom:.3rem;}
+.quick-card p{font-size:.72rem;color:var(--muted);font-weight:300;line-height:1.5;}
+.quick-arrow{position:absolute;bottom:.8rem;right:.8rem;color:var(--gold);font-size:.8rem;opacity:.6;}
 
-/* ──────── SERVICES ──────── */
-.services{
-  padding:100px 6%;
-  background:var(--ink2);
-  border-top:1px solid var(--border2);
-}
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:1.5rem;
-  margin-top:3.5rem;
-}
-.svc-card{
-  border:1px solid var(--border);
-  border-radius:4px;
-  padding:2.2rem;
-  position:relative;
-  background:rgba(255,255,255,.015);
-  transition:transform .3s,border-color .3s;
-  cursor:default;
-}
-.svc-card:hover{transform:translateY(-5px);border-color:rgba(184,150,78,.5);}
-.svc-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:4rem;font-weight:300;
-  color:rgba(184,150,78,.1);
-  position:absolute;top:1rem;right:1.5rem;
-  line-height:1;
-}
-.svc-icon{font-size:2rem;margin-bottom:1rem;display:block;}
-.svc-card h3{font-size:1rem;font-weight:700;margin-bottom:.6rem;}
-.svc-card p{font-size:.82rem;color:rgba(232,236,244,.5);font-weight:300;line-height:1.7;}
-.svc-badge{
-  display:inline-block;margin-top:1rem;
-  font-family:'Montserrat',sans-serif;
-  font-size:.6rem;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:.25rem .7rem;border-radius:2px;
-}
+/* SHARED */
+.page-header{padding:1.5rem 0 1rem;border-bottom:1px solid var(--border);margin-bottom:1.5rem;}
+.eyebrow{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;line-height:1.2;}
+.page-title em{font-style:italic;color:var(--gold2);}
+.section-h2{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin:1.5rem 0 .8rem;display:flex;align-items:center;gap:.6rem;}
+.section-h2::after{content:'';flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);}
+
+/* BRAND */
+.brand-visual{background:linear-gradient(135deg,rgba(184,150,78,.08),rgba(184,150,78,.02));border:1px solid var(--border);border-radius:12px;padding:2rem;text-align:center;margin-bottom:1.5rem;}
+.brand-globe{font-size:3.5rem;margin-bottom:.8rem;display:block;}
+.brand-visual h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--gold2);margin-bottom:.5rem;}
+.brand-visual p{font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.7;}
+.brand-quote{border-left:2px solid var(--gold);padding:1rem 1.2rem;margin:1.5rem 0;background:rgba(184,150,78,.04);border-radius:0 8px 8px 0;}
+.brand-quote p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--gold2);line-height:1.6;}
+.brand-story p{font-size:.86rem;color:rgba(232,236,244,.65);font-weight:300;line-height:1.8;margin-bottom:1rem;}
+.pillar-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.pillar-item:last-child{border-bottom:none;}
+.pillar-num-sm{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:rgba(184,150,78,.25);line-height:1;flex-shrink:0;width:2rem;}
+.pillar-icon-sm{font-size:1.3rem;margin-top:.1rem;}
+.pillar-text h4{font-size:.9rem;font-weight:700;margin-bottom:.3rem;}
+.pillar-text p{font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.6;}
+
+/* PARTNER */
+.partner-cards{display:flex;flex-direction:column;gap:1rem;margin-top:1rem;}
+.partner-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;position:relative;overflow:hidden;}
+.partner-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold3),transparent);}
+.partner-tag{font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:block;}
+.partner-card h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;margin-bottom:.3rem;}
+.partner-card .desc{font-size:.8rem;color:var(--muted);margin-bottom:1rem;font-weight:300;line-height:1.6;}
+.partner-price{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--gold2);line-height:1;}
+.partner-price sub{font-size:.9rem;color:var(--muted);font-weight:300;}
+.partner-monthly{font-size:.75rem;color:var(--muted);margin:.3rem 0 1rem;}
+.feat-list{list-style:none;}
+.feat-list li{font-size:.8rem;color:rgba(232,236,244,.65);padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:.6rem;}
+.feat-list li::before{content:'→';color:var(--gold);font-size:.7rem;flex-shrink:0;}
+.apply-btn{width:100%;margin-top:1.2rem;background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;padding:.85rem;border-radius:8px;border:none;cursor:pointer;}
+.apply-btn:active{opacity:.85;}
+.apply-btn.outline{background:transparent;border:1px solid var(--gold);color:var(--gold);}
+.flow-list{margin-top:1.5rem;}
+.flow-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;position:relative;}
+.flow-item:not(:last-child)::after{content:'';position:absolute;left:1.1rem;top:2.8rem;width:1px;height:calc(100% - 1.5rem);background:linear-gradient(to bottom,var(--gold),transparent);opacity:.3;}
+.flow-dot-wrap{flex-shrink:0;padding-top:.15rem;}
+.flow-dot2{width:22px;height:22px;border-radius:50%;border:2px solid var(--gold);background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:.55rem;font-weight:700;color:var(--gold);}
+.flow-item h4{font-size:.9rem;font-weight:700;margin-bottom:.3rem;}
+.flow-item p{font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.6;}
+
+/* SERVICES */
+.svc-list{display:flex;flex-direction:column;gap:.8rem;margin-top:1rem;}
+.svc-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;cursor:pointer;position:relative;overflow:hidden;}
+.svc-item:active{background:rgba(184,150,78,.06);}
+.svc-item-icon{font-size:1.8rem;flex-shrink:0;width:48px;height:48px;background:rgba(184,150,78,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.svc-item-body{flex:1;}
+.svc-item-body h3{font-size:.92rem;font-weight:700;margin-bottom:.3rem;}
+.svc-item-body p{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.6;}
+.svc-badge{display:inline-block;margin-top:.5rem;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px;}
 .now{background:rgba(184,150,78,.15);color:var(--gold);}
 .soon{background:rgba(100,120,160,.15);color:#7899cc;}
+.svc-arrow{position:absolute;right:1rem;top:50%;transform:translateY(-50%);color:var(--gold);opacity:.4;font-size:.9rem;}
 
-/* ──────── FLOW ──────── */
-.flow{padding:100px 6%;}
-.flow-steps{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:0;
-  position:relative;
-  margin-top:3.5rem;
-}
-.flow-steps::before{
-  content:'';
-  position:absolute;top:2rem;left:0;right:0;
-  height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  opacity:.3;
-}
-.flow-step{
-  text-align:center;
-  padding:0 1.5rem 2rem;
-  position:relative;
-}
-.flow-dot{
-  width:16px;height:16px;border-radius:50%;
-  background:var(--ink);
-  border:2px solid var(--gold);
-  margin:0 auto 1.5rem;
-  position:relative;z-index:1;
-  transition:background .3s;
-}
-.flow-step:hover .flow-dot{background:var(--gold);}
-.flow-step-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:3rem;font-weight:300;
-  color:rgba(184,150,78,.15);
-  line-height:1;margin-bottom:.5rem;
-}
-.flow-step h4{font-size:.95rem;font-weight:700;margin-bottom:.5rem;}
-.flow-step p{font-size:.8rem;color:rgba(232,236,244,.5);font-weight:300;}
-
-/* ──────── VISION ──────── */
-.vision{
-  padding:120px 6%;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  border-top:1px solid var(--border2);
-  border-bottom:1px solid var(--border2);
-}
-.vision::before{
-  content:'';
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(184,150,78,.08) 0%,transparent 65%);
-  pointer-events:none;
-}
-.vision blockquote{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.8rem,4vw,3rem);
-  font-weight:300;
-  line-height:1.5;
-  max-width:860px;margin:0 auto;
-  color:rgba(232,236,244,.9);
-  position:relative;z-index:1;
-}
-.vision blockquote em{font-style:italic;color:var(--gold2);}
-.vision-source{
-  margin-top:2rem;
-  font-family:'Montserrat',sans-serif;
-  font-size:.7rem;letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);
-}
-
-/* ──────── APPLY ──────── */
-.apply-section{padding:100px 6%;background:var(--ink2);}
-.apply-inner{
-  display:grid;grid-template-columns:1fr 1.4fr;
-  gap:5rem;align-items:start;
-}
-.apply-info .eyebrow{
-  font-family:'Montserrat',sans-serif;
-  font-size:.65rem;font-weight:600;
-  letter-spacing:4px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.2rem;
-}
-.apply-info h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,3.5vw,2.8rem);
-  font-weight:400;line-height:1.3;margin-bottom:1rem;
-}
-.apply-info h2 em{font-style:italic;color:var(--gold2);}
-.apply-info p{font-size:.88rem;color:rgba(232,236,244,.55);font-weight:300;margin-bottom:1.8rem;}
-.contact-item{
-  display:flex;align-items:center;gap:.8rem;
-  margin-bottom:1rem;
-  font-size:.85rem;color:rgba(232,236,244,.65);
-}
-.contact-item a{color:var(--gold2);text-decoration:none;}
-.contact-icon{font-size:1rem;color:var(--gold);}
-
-/* form */
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+/* APPLY */
+.apply-info-box{background:linear-gradient(135deg,rgba(184,150,78,.08),rgba(184,150,78,.02));border:1px solid var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;}
+.apply-info-box p{font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:.8rem;}
+.contact-row{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:rgba(232,236,244,.7);margin-bottom:.5rem;}
+.contact-row a{color:var(--gold2);text-decoration:none;}
+.apply-form{display:flex;flex-direction:column;gap:.9rem;margin-top:1rem;}
 .form-group{display:flex;flex-direction:column;gap:.4rem;}
-.form-group.full{grid-column:1/-1;}
-label{
-  font-family:'Montserrat',sans-serif;
-  font-size:.62rem;font-weight:600;
-  letter-spacing:2px;text-transform:uppercase;
-  color:var(--muted);
-}
-input,select,textarea{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:3px;
-  padding:.75rem 1rem;
-  color:#e8ecf4;
-  font-family:'Noto Sans KR',sans-serif;
-  font-size:.88rem;
-  outline:none;
-  transition:border-color .25s,background .25s;
-}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+label{font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+input,select,textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'Noto Sans KR',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;-webkit-appearance:none;width:100%;}
 input::placeholder,textarea::placeholder{color:rgba(232,236,244,.2);}
-input:focus,select:focus,textarea:focus{
-  border-color:var(--gold);
-  background:rgba(184,150,78,.05);
-}
-select option{background:#111e2e;color:#e8ecf4;}
-textarea{min-height:110px;resize:vertical;}
-.form-submit{margin-top:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
-#formMsg{font-size:.82rem;color:var(--gold);display:none;}
-
-/* ──────── FOOTER ──────── */
-footer{
-  background:rgba(5,10,18,.95);
-  border-top:1px solid var(--border);
-  padding:4rem 6% 2rem;
-}
-.footer-top{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:3rem;padding-bottom:3rem;
-  border-bottom:1px solid var(--border2);
-}
-.footer-brand .logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.5rem;font-weight:600;
-  letter-spacing:1.5px;margin-bottom:.5rem;
-}
-.footer-brand .logo span{color:var(--gold);}
-.footer-brand .tagline{
-  font-size:.78rem;color:var(--muted);
-  font-style:italic;margin-bottom:1rem;
-}
-.footer-brand p{font-size:.76rem;color:rgba(232,236,244,.3);line-height:1.7;font-weight:300;}
-.footer-col h4{
-  font-family:'Montserrat',sans-serif;
-  font-size:.62rem;font-weight:700;
-  letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.2rem;
-}
-.footer-col ul{list-style:none;}
-.footer-col ul li{margin-bottom:.6rem;}
-.footer-col ul li a{
-  font-size:.78rem;color:rgba(232,236,244,.4);
-  text-decoration:none;transition:color .2s;
-}
-.footer-col ul li a:hover{color:var(--gold2);}
-.footer-bottom{
-  padding-top:1.5rem;
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:1rem;
-}
-.footer-bottom p{font-size:.72rem;color:rgba(232,236,244,.2);}
-.footer-operator{font-size:.72rem;color:rgba(232,236,244,.2);text-align:right;}
-
-/* ──────── SCROLL ANIM ──────── */
-.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
-.fade-up.visible{opacity:1;transform:translateY(0);}
-.fade-left{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease;}
-.fade-left.visible{opacity:1;transform:translateX(0);}
-.fade-right{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s ease;}
-.fade-right.visible{opacity:1;transform:translateX(0);}
-
-/* ──────── MOBILE ──────── */
-@media(max-width:800px){
-  .story{grid-template-columns:1fr;gap:3rem;}
-  .globe-wrap{width:260px;height:260px;}
-  .story-visual{order:-1;}
-  .structure-grid{grid-template-columns:1fr;}
-  .apply-inner{grid-template-columns:1fr;}
-  .footer-top{grid-template-columns:1fr 1fr;}
-  .nav-links{display:none;}
-  .form-grid{grid-template-columns:1fr;}
-  .flow-steps::before{display:none;}
-}
-@media(max-width:500px){
-  .footer-top{grid-template-columns:1fr;}
-  .footer-bottom{flex-direction:column;text-align:center;}
-  .footer-operator{text-align:center;}
-}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);background:rgba(184,150,78,.04);}
+select option{background:#111e2e;}
+textarea{min-height:100px;resize:none;}
+.form-submit-btn{width:100%;background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:2px;text-transform:uppercase;padding:1rem;border-radius:10px;border:none;cursor:pointer;margin-top:.5rem;}
+.form-submit-btn:active{opacity:.85;}
+#formMsg{text-align:center;font-size:.85rem;color:var(--gold);margin-top:.5rem;display:none;}
+.footer-bar{margin-top:2.5rem;padding:1.5rem 0;border-top:1px solid var(--border);text-align:center;}
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- NAV -->
-<nav id="navbar">
-  <div class="nav-logo">RUTA <span>GLOBAL</span></div>
-  <ul class="nav-links">
-    <li><a href="#about">브랜드</a></li>
-    <li><a href="#structure">파트너십</a></li>
-    <li><a href="#services">서비스</a></li>
-    <li><a href="#process">진행절차</a></li>
-    <li><a href="#apply" class="nav-apply">파트너 신청</a></li>
-  </ul>
+<nav class="top-nav">
+  <div class="top-logo">RUTA <span>GLOBAL</span></div>
+  <button class="top-apply" onclick="goPage('apply')">파트너 신청</button>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg">
-    <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <path class="route-line" d="M0,700 Q200,400 400,500 T800,200 T1440,300"/>
-      <path class="route-line" d="M0,200 Q300,350 600,250 T1100,400 T1440,600"/>
-      <path class="route-line" d="M100,900 Q400,600 700,650 T1200,350 T1440,150"/>
-      <circle class="dot" cx="400" cy="500" r="4"/>
-      <circle class="dot" cx="800" cy="200" r="4"/>
-      <circle class="dot" cx="1100" cy="400" r="4"/>
-    </svg>
-  </div>
-  <div class="hero-noise"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">루타글로벌 · Ruta Global</div>
-    <h1>세계를 향한<br><em>비즈니스의 길</em>을<br>만드는 기업</h1>
-    <p class="hero-sub">수출입, 물류, 유통, 온라인 비즈니스까지<br>하나의 흐름으로 연결합니다</p>
-    <div class="hero-btns">
-      <a href="#apply" class="btn-gold">파트너 신청하기</a>
-      <a href="#about" class="btn-ghost">브랜드 스토리</a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-bar"></div>
-    <span>Scroll</span>
-  </div>
-</section>
+<div class="pages">
 
-<!-- BRAND STORY -->
-<section class="story" id="about">
-  <div class="story-text fade-left">
-    <div class="section-eyebrow">BRAND STORY</div>
-    <h2>국내에 머무르지 않고<br><em>더 넓은 길</em>을 연결합니다</h2>
-    <p>루타글로벌은 국내 시장에 머무르지 않고 더 넓은 유통과 무역의 흐름을 연결하는 기업으로 출발합니다.</p>
-    <div class="quote">"좋은 상품을 찾고, 적합한 판매 구조를 만들고,<br>필요한 물류와 유통 시스템을 더해<br>사업이 자연스럽게 시장으로 흘러가도록 — "</div>
-    <p>이 이름에는 단순히 물건을 옮기고 판매하는 회사를 넘어, 글로벌 시장으로 향하는 길을 설계하고 연결하는 기업이라는 비전이 담겨 있습니다.</p>
-    <p>각기 다른 요소들을 하나의 흐름으로 이어 누구나 더 넓은 시장으로 나아갈 수 있도록 돕는 것, 그것이 루타글로벌의 역할입니다.</p>
-    <a href="#apply" class="btn-gold" style="margin-top:2rem;display:inline-block;">함께 시작하기</a>
-  </div>
-  <div class="story-visual fade-right">
-    <div class="globe-wrap">
-      <div class="globe-ring ring1"></div>
-      <div class="globe-ring ring2"></div>
-      <div class="globe-ring ring3"></div>
-      <div class="globe-center"><div class="globe-icon">🌐</div></div>
-      <span class="globe-label lbl-top">GLOBAL</span>
-      <span class="globe-label lbl-right">TRADE</span>
-      <span class="globe-label lbl-bottom">RUTA</span>
-      <span class="globe-label lbl-left">ROUTE</span>
-      <div class="connect-dot cd1"></div>
-      <div class="connect-dot cd2"></div>
-      <div class="connect-dot cd3"></div>
-      <div class="connect-dot cd4"></div>
-    </div>
-  </div>
-</section>
-
-<!-- PILLARS -->
-<section class="pillars" id="pillars">
-  <div class="section-header fade-up">
-    <div class="eyebrow">CORE PILLARS</div>
-    <h2>루타글로벌이 연결하는<br><em>4가지 흐름</em></h2>
-    <p>수출입부터 온라인 비즈니스까지, 사업의 모든 연결고리를 하나로</p>
-  </div>
-  <div class="pillars-grid">
-    <div class="pillar fade-up">
-      <div class="pillar-num">01</div>
-      <span class="pillar-icon">🛳️</span>
-      <h3>수출입 & 무역</h3>
-      <p>해외 시장으로 향하는 수출입 프로세스를 체계적으로 설계하고 지원합니다. 글로벌 네트워크를 통해 적합한 파트너를 연결합니다.</p>
-    </div>
-    <div class="pillar fade-up">
-      <div class="pillar-num">02</div>
-      <span class="pillar-icon">🚚</span>
-      <h3>물류 & 유통</h3>
-      <p>국내외 물류 3PL 시스템으로 효율적인 배송과 재고 관리를 지원합니다. 사업 규모에 맞는 최적의 물류 솔루션을 제공합니다.</p>
-    </div>
-    <div class="pillar fade-up">
-      <div class="pillar-num">03</div>
-      <span class="pillar-icon">🛒</span>
-      <h3>온라인 비즈니스</h3>
-      <p>쇼핑몰 분양, PG 결제 연동, 온라인 마케팅까지 온라인 사업의 전 과정을 원스톱으로 지원합니다.</p>
-    </div>
-    <div class="pillar fade-up">
-      <div class="pillar-num">04</div>
-      <span class="pillar-icon">📈</span>
-      <h3>비즈니스 컨설팅</h3>
-      <p>세무, 법인 설립, 정부지원금 컨설팅, AI 교육까지 사업 성장을 위한 종합 지원 서비스를 제공합니다.</p>
-    </div>
-  </div>
-</section>
-
-<!-- VISION QUOTE -->
-<section class="vision">
-  <div class="fade-up">
-    <blockquote>
-      "각기 다른 요소들을 하나의 흐름으로 이어<br>
-      <em>누구나 더 넓은 시장으로 나아갈 수 있도록</em><br>
-      길을 만드는 것이 루타글로벌의 역할입니다"
-    </blockquote>
-    <div class="vision-source">— Ruta Global · 루타글로벌 브랜드 비전</div>
-  </div>
-</section>
-
-<!-- PARTNERSHIP STRUCTURE -->
-<section class="structure" id="structure">
-  <div class="section-header fade-up" style="text-align:left;max-width:560px;">
-    <div class="eyebrow">PARTNERSHIP</div>
-    <h2>대리점 &<em> 딜러</em> 파트너십</h2>
-    <p style="color:rgba(232,236,244,.5);font-size:.88rem;margin-top:.8rem;font-weight:300;">
-      누구나 시작할 수 있는 낮은 진입장벽으로 안정적인 고정 수익 구조를 만드세요.
-    </p>
-  </div>
-  <div class="structure-grid">
-    <div class="struct-card fade-up">
-      <span class="struct-tag">Agency · 대리점 파트너</span>
-      <h3>대리점</h3>
-      <p>사업권 보유 + 하위 딜러 모집으로 고정 수익과 영업 수익을 동시에</p>
-      <div class="struct-price">20만원 <sub>/ 입점비</sub></div>
-      <div class="struct-monthly">월 유지관리비 2만원</div>
-      <ul class="struct-features">
-        <li>PG 온라인 결제 시스템 연동</li>
-        <li>전용 쇼핑몰 URL 제공</li>
-        <li>상품 등록 관리자 페이지</li>
-        <li>딜러 모집 및 관리 권한</li>
-        <li>주 단위 판매 정산</li>
-        <li>영업 교육 및 지원 제공</li>
-      </ul>
-    </div>
-    <div class="struct-card fade-up">
-      <span class="struct-tag">Dealer · 딜러 파트너</span>
-      <h3>딜러</h3>
-      <p>직장인, 주부, 프리랜서 — 누구나 카카오톡 링크 하나로 수익 창출 시작</p>
-      <div class="struct-price">1만원 <sub>/ 입점비</sub></div>
-      <div class="struct-monthly">별도 월 관리비 없음</div>
-      <ul class="struct-features">
-        <li>전용 딜러 링크 즉시 발급</li>
-        <li>SNS · 카카오톡 공유 영업</li>
-        <li>판매 수수료 수익</li>
-        <li>추가 진입 장벽 없음</li>
-        <li>대리점 전환 가능</li>
-        <li>영업사원 수당 구조 가능</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="section-header fade-up">
-    <div class="eyebrow">ONE-STOP PLAN</div>
-    <h2>루타글로벌<em> 원스톱</em> 서비스</h2>
-    <p>사업에 필요한 모든 것을 하나의 플랫폼에서</p>
-  </div>
-  <div class="services-grid">
-    <div class="svc-card fade-up">
-      <div class="svc-num">01</div>
-      <span class="svc-icon">🛒</span>
-      <h3>쇼핑몰 분양 & PG 연동</h3>
-      <p>전용 쇼핑몰 제작부터 카드 결제 시스템 연동까지. 비사업자도 온라인 판매를 시작할 수 있는 완전한 솔루션을 제공합니다.</p>
-      <span class="svc-badge now">즉시 시작</span>
-    </div>
-    <div class="svc-card fade-up">
-      <div class="svc-num">02</div>
-      <span class="svc-icon">💳</span>
-      <h3>온라인 결제 시스템</h3>
-      <p>블로그 결제, 라이브방송 결제, 노점 · 백화점 · 비사업자 결제까지 다양한 채널의 결제를 하나로 통합합니다.</p>
-      <span class="svc-badge now">즉시 시작</span>
-    </div>
-    <div class="svc-card fade-up">
-      <div class="svc-num">03</div>
-      <span class="svc-icon">📊</span>
-      <h3>세무 컨설팅 연계</h3>
-      <p>개인 · 법인 사업자 신규 등록, 기장료 연계, 종합소득세 · 법인세 신고까지 전문 세무사와 연결해드립니다.</p>
-      <span class="svc-badge now">즉시 시작</span>
-    </div>
-    <div class="svc-card fade-up">
-      <div class="svc-num">04</div>
-      <span class="svc-icon">🤖</span>
-      <h3>AI 교육 강의</h3>
-      <p>대리점 운영 교육, 온라인 홍보 전략, AI 활용 비즈니스 교육. 성장하는 파트너를 위한 전문 교육 과정을 운영합니다.</p>
-      <span class="svc-badge now">즉시 시작</span>
-    </div>
-    <div class="svc-card fade-up">
-      <div class="svc-num">05</div>
-      <span class="svc-icon">🏛️</span>
-      <h3>정부지원금 컨설팅</h3>
-      <p>사업자 대상 정부 지원금 및 대출 컨설팅. 받을 수 있는 지원을 최대한 활용할 수 있도록 전문가와 연결합니다.</p>
-      <span class="svc-badge soon">준비중</span>
-    </div>
-    <div class="svc-card fade-up">
-      <div class="svc-num">06</div>
-      <span class="svc-icon">🌐</span>
-      <h3>무역 소싱 & 3PL 물류</h3>
-      <p>해외 소싱부터 국내외 물류 아웃소싱까지. 커머스 사업 확장에 필요한 글로벌 인프라를 제공합니다.</p>
-      <span class="svc-badge soon">준비중</span>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="flow" id="process">
-  <div class="section-header fade-up" style="text-align:left;max-width:560px;">
-    <div class="eyebrow">PROCESS</div>
-    <h2>파트너 시작<em> 4단계</em></h2>
-    <p style="color:rgba(232,236,244,.5);font-size:.88rem;margin-top:.8rem;font-weight:300;">
-      간단한 4단계로 루타글로벌 파트너가 되세요.
-    </p>
-  </div>
-  <div class="flow-steps">
-    <div class="flow-step fade-up">
-      <div class="flow-dot"></div>
-      <div class="flow-step-num">01</div>
-      <h4>신청서 제출</h4>
-      <p>아래 신청서에 기본 정보와 원하는 파트너 유형을 선택해 제출하세요.</p>
-    </div>
-    <div class="flow-step fade-up">
-      <div class="flow-dot"></div>
-      <div class="flow-step-num">02</div>
-      <h4>담당자 상담</h4>
-      <p>24시간 내 담당자가 연락드려 맞춤 상담을 진행합니다.</p>
-    </div>
-    <div class="flow-step fade-up">
-      <div class="flow-dot"></div>
-      <div class="flow-step-num">03</div>
-      <h4>입점비 납부</h4>
-      <p>대리점 20만원 / 딜러 1만원 납부 후 즉시 파트너 등록 완료.</p>
-    </div>
-    <div class="flow-step fade-up">
-      <div class="flow-dot"></div>
-      <div class="flow-step-num">04</div>
-      <h4>비즈니스 시작</h4>
-      <p>전용 URL과 관리자 페이지로 바로 영업을 시작하세요.</p>
-    </div>
-  </div>
-</section>
-
-<!-- APPLY -->
-<section class="apply-section" id="apply">
-  <div class="apply-inner">
-    <div class="apply-info fade-left">
-      <div class="eyebrow">APPLY NOW</div>
-      <h2>루타글로벌과<br><em>함께 시작</em>하세요</h2>
-      <p>신청서를 제출하시면 담당자가 빠르게 연락드립니다. 의정부 · 양주 지역을 중심으로 전국 파트너를 모집합니다.</p>
-      <div class="contact-item">
-        <span class="contact-icon">📞</span>
-        <a href="tel:010-8653-4054">010-8653-4054</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon">📍</span>
-        경기도 의정부시
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon">⏰</span>
-        평일 09:00 – 18:00
+  <!-- 홈 -->
+  <div class="page active" id="page-home">
+    <div class="home-hero">
+      <svg class="hero-bg-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,350 Q100,200 200,250 T400,150" stroke="#b8964e" stroke-width="1" fill="none" stroke-dasharray="600" stroke-dashoffset="600"><animate attributeName="stroke-dashoffset" from="600" to="0" dur="3s" fill="freeze"/></path>
+        <path d="M0,150 Q150,300 250,200 T400,300" stroke="#d4af6a" stroke-width=".7" fill="none" stroke-dasharray="500" stroke-dashoffset="500"><animate attributeName="stroke-dashoffset" from="500" to="0" dur="3.5s" begin=".5s" fill="freeze"/></path>
+        <circle cx="200" cy="250" r="3" fill="#b8964e" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".5s" begin="2.8s" fill="freeze"/></circle>
+        <circle cx="350" cy="150" r="3" fill="#d4af6a" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".5s" begin="3s" fill="freeze"/></circle>
+      </svg>
+      <div class="hero-badge">루타글로벌 · Ruta Global</div>
+      <h1>세계를 향한<br><em>비즈니스의 길</em>을<br>만드는 기업</h1>
+      <p>수출입, 물류, 유통, 온라인 비즈니스까지<br>하나의 흐름으로 연결합니다</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="goPage('apply')">파트너 신청하기</button>
+        <button class="btn-ghost" onclick="goPage('brand')">브랜드 스토리</button>
       </div>
     </div>
+    <div class="home-stats">
+      <div class="stat"><div class="stat-num">20만</div><div class="stat-label">대리점 입점비</div></div>
+      <div class="stat"><div class="stat-num">1만</div><div class="stat-label">딜러 입점비</div></div>
+      <div class="stat"><div class="stat-num">4+</div><div class="stat-label">핵심서비스</div></div>
+      <div class="stat"><div class="stat-num">0.1%</div><div class="stat-label">카드수수료</div></div>
+    </div>
+    <div class="home-cards">
+      <h2>바로 <em>시작하기</em></h2>
+      <div class="quick-grid">
+        <div class="quick-card" onclick="goPage('brand')"><span class="quick-icon">🌐</span><h3>브랜드 스토리</h3><p>루타글로벌의 비전을 만나보세요</p><span class="quick-arrow">›</span></div>
+        <div class="quick-card" onclick="goPage('partner')"><span class="quick-icon">🤝</span><h3>파트너십</h3><p>대리점·딜러 구조 안내</p><span class="quick-arrow">›</span></div>
+        <div class="quick-card" onclick="goPage('services')"><span class="quick-icon">🛒</span><h3>서비스</h3><p>원스톱 비즈니스 플랜</p><span class="quick-arrow">›</span></div>
+        <div class="quick-card" onclick="goPage('apply')"><span class="quick-icon">📋</span><h3>신청하기</h3><p>지금 바로 파트너 신청</p><span class="quick-arrow">›</span></div>
+      </div>
+    </div>
+  </div>
 
-    <div class="fade-right">
-      <form id="applyForm">
-        <div class="form-grid">
-          <div class="form-group">
-            <label>이름 *</label>
-            <input type="text" name="name" placeholder="홍길동" required/>
-          </div>
-          <div class="form-group">
-            <label>연락처 *</label>
-            <input type="tel" name="phone" placeholder="010-0000-0000" required/>
-          </div>
-          <div class="form-group">
-            <label>이메일</label>
-            <input type="email" name="email" placeholder="example@email.com"/>
-          </div>
-          <div class="form-group">
-            <label>지역 *</label>
-            <input type="text" name="region" placeholder="예: 의정부시" required/>
-          </div>
-          <div class="form-group">
-            <label>신청 유형 *</label>
-            <select name="type" required>
-              <option value="">선택해주세요</option>
-              <option value="대리점">대리점 파트너 (20만원)</option>
-              <option value="딜러">딜러 파트너 (1만원)</option>
-              <option value="영업사원">영업사원 지원</option>
-              <option value="문의">서비스 문의</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>현재 직업 / 업종</label>
-            <input type="text" name="job" placeholder="직장인, 자영업, 프리랜서 등"/>
-          </div>
-          <div class="form-group full">
-            <label>문의 내용</label>
-            <textarea name="message" placeholder="궁금하신 점이나 희망하시는 내용을 자유롭게 작성해주세요."></textarea>
-          </div>
+  <!-- 브랜드 -->
+  <div class="page" id="page-brand">
+    <div class="page-header"><div class="eyebrow">Brand Story</div><div class="page-title">루타글로벌의<br><em>비전과 이야기</em></div></div>
+    <div class="brand-visual"><span class="brand-globe">🌐</span><h3>"세계를 향한 비즈니스의 길을 만드는 기업"</h3><p>Ruta — 길(Route)을 뜻하는 이름처럼<br>사업이 자연스럽게 시장으로 흘러가도록 연결합니다</p></div>
+    <div class="brand-story">
+      <p>루타글로벌은 국내 시장에 머무르지 않고 더 넓은 유통과 무역의 흐름을 연결하는 기업으로 출발합니다.</p>
+      <div class="brand-quote"><p>"좋은 상품을 찾고, 적합한 판매 구조를 만들고,<br>필요한 물류와 유통 시스템을 더해<br>사업이 자연스럽게 시장으로 흘러가도록<br>길을 만드는 것이 루타글로벌의 역할입니다."</p></div>
+      <p>이 이름에는 단순히 물건을 옮기고 판매하는 회사를 넘어, 글로벌 시장으로 향하는 길을 설계하고 연결하는 기업이라는 비전이 담겨 있습니다.</p>
+      <p>각기 다른 요소들을 하나의 흐름으로 이어 누구나 더 넓은 시장으로 나아갈 수 있도록 돕는 것, 그것이 루타글로벌의 역할입니다.</p>
+    </div>
+    <div class="section-h2">핵심 4가지 흐름</div>
+    <div>
+      <div class="pillar-item"><div class="pillar-num-sm">01</div><div class="pillar-icon-sm">🛳️</div><div class="pillar-text"><h4>수출입 & 무역</h4><p>해외 시장으로 향하는 수출입 프로세스를 체계적으로 설계하고 글로벌 네트워크를 연결합니다.</p></div></div>
+      <div class="pillar-item"><div class="pillar-num-sm">02</div><div class="pillar-icon-sm">🚚</div><div class="pillar-text"><h4>물류 & 유통</h4><p>국내외 물류 3PL 시스템으로 효율적인 배송과 재고 관리를 지원합니다.</p></div></div>
+      <div class="pillar-item"><div class="pillar-num-sm">03</div><div class="pillar-icon-sm">🛒</div><div class="pillar-text"><h4>온라인 비즈니스</h4><p>쇼핑몰 분양, PG 결제 연동, 온라인 마케팅까지 온라인 사업의 전 과정을 원스톱으로 지원합니다.</p></div></div>
+      <div class="pillar-item"><div class="pillar-num-sm">04</div><div class="pillar-icon-sm">📈</div><div class="pillar-text"><h4>비즈니스 컨설팅</h4><p>세무, 법인 설립, 정부지원금, AI 교육까지 사업 성장을 위한 종합 지원을 제공합니다.</p></div></div>
+    </div>
+    <div style="height:1.5rem;"></div>
+    <button class="btn-gold" style="width:100%" onclick="goPage('apply')">파트너 신청하기</button>
+    <div style="height:1rem;"></div>
+  </div>
+
+  <!-- 파트너십 -->
+  <div class="page" id="page-partner">
+    <div class="page-header"><div class="eyebrow">Partnership</div><div class="page-title">대리점 &<br><em>딜러 파트너십</em></div></div>
+    <div class="partner-cards">
+      <div class="partner-card">
+        <span class="partner-tag">Agency · 대리점 파트너</span>
+        <h3>대리점</h3>
+        <p class="desc">사업권 보유 + 하위 딜러 모집으로 고정 수익과 영업 수익을 동시에 창출하세요.</p>
+        <div class="partner-price">20만원 <sub>/ 입점비</sub></div>
+        <div class="partner-monthly">월 유지관리비 2만원</div>
+        <ul class="feat-list">
+          <li>PG 온라인 결제 시스템 연동</li><li>전용 쇼핑몰 URL 제공</li><li>상품 등록 관리자 페이지</li><li>딜러 모집 및 관리 권한</li><li>주 단위 판매 정산</li><li>영업 교육 및 지원 제공</li>
+        </ul>
+        <button class="apply-btn" onclick="goPage('apply')">대리점 신청하기</button>
+      </div>
+      <div class="partner-card">
+        <span class="partner-tag">Dealer · 딜러 파트너</span>
+        <h3>딜러</h3>
+        <p class="desc">직장인, 주부, 프리랜서 — 카카오톡 링크 하나로 수익 창출을 시작하세요.</p>
+        <div class="partner-price">1만원 <sub>/ 입점비</sub></div>
+        <div class="partner-monthly">별도 월 관리비 없음</div>
+        <ul class="feat-list">
+          <li>전용 딜러 링크 즉시 발급</li><li>SNS · 카카오톡 공유 영업</li><li>판매 수수료 수익</li><li>추가 진입 장벽 없음</li><li>대리점 전환 가능</li>
+        </ul>
+        <button class="apply-btn outline" onclick="goPage('apply')">딜러 신청하기</button>
+      </div>
+    </div>
+    <div class="section-h2">파트너 시작 4단계</div>
+    <div class="flow-list">
+      <div class="flow-item"><div class="flow-dot-wrap"><div class="flow-dot2">01</div></div><div><h4>신청서 제출</h4><p>신청 탭에서 기본 정보와 원하는 파트너 유형을 선택해 제출하세요.</p></div></div>
+      <div class="flow-item"><div class="flow-dot-wrap"><div class="flow-dot2">02</div></div><div><h4>담당자 상담</h4><p>24시간 내 담당자가 연락드려 맞춤 상담을 진행합니다.</p></div></div>
+      <div class="flow-item"><div class="flow-dot-wrap"><div class="flow-dot2">03</div></div><div><h4>입점비 납부</h4><p>대리점 20만원 / 딜러 1만원 납부 후 즉시 파트너 등록이 완료됩니다.</p></div></div>
+      <div class="flow-item"><div class="flow-dot-wrap"><div class="flow-dot2">04</div></div><div><h4>비즈니스 시작</h4><p>전용 URL과 관리자 페이지로 바로 영업을 시작하세요.</p></div></div>
+    </div>
+    <div style="height:1rem;"></div>
+  </div>
+
+  <!-- 서비스 -->
+  <div class="page" id="page-services">
+    <div class="page-header"><div class="eyebrow">One-Stop Plan</div><div class="page-title">루타글로벌<br><em>원스톱 서비스</em></div></div>
+    <div class="svc-list">
+      <div class="svc-item" onclick="goPage('apply')"><div class="svc-item-icon">🛒</div><div class="svc-item-body"><h3>쇼핑몰 분양 & PG 연동</h3><p>전용 쇼핑몰 제작부터 카드 결제 시스템 연동까지. 비사업자도 온라인 판매 시작 가능.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">›</span></div>
+      <div class="svc-item" onclick="goPage('apply')"><div class="svc-item-icon">💳</div><div class="svc-item-body"><h3>온라인 결제 시스템</h3><p>블로그 결제, 라이브방송 결제, 비사업자 결제까지 다양한 채널 통합 지원.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">›</span></div>
+      <div class="svc-item" onclick="goPage('apply')"><div class="svc-item-icon">📊</div><div class="svc-item-body"><h3>세무 컨설팅 연계</h3><p>개인·법인 사업자 신규 등록, 기장료 연계, 종합소득세·법인세 신고 지원.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">›</span></div>
+      <div class="svc-item" onclick="goPage('apply')"><div class="svc-item-icon">🤖</div><div class="svc-item-body"><h3>AI 교육 강의</h3><p>대리점 운영 교육, 온라인 홍보 전략, AI 활용 비즈니스 교육 과정 운영.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">›</span></div>
+      <div class="svc-item"><div class="svc-item-icon">🏛️</div><div class="svc-item-body"><h3>정부지원금 컨설팅</h3><p>사업자 대상 정부 지원금 및 대출 컨설팅. 전문가 연결 서비스.</p><span class="svc-badge soon">준비중</span></div></div>
+      <div class="svc-item"><div class="svc-item-icon">🌐</div><div class="svc-item-body"><h3>무역 소싱 & 3PL 물류</h3><p>해외 소싱부터 국내외 물류 아웃소싱까지 글로벌 인프라 지원.</p><span class="svc-badge soon">준비중</span></div></div>
+    </div>
+    <div style="height:1rem;"></div>
+  </div>
+
+  <!-- 신청 -->
+  <div class="page" id="page-apply">
+    <div class="page-header"><div class="eyebrow">Apply Now</div><div class="page-title">파트너<br><em>신청하기</em></div></div>
+    <div class="apply-info-box">
+      <p>신청서를 제출하시면 담당자가 24시간 내 연락드립니다. 의정부·양주 지역을 중심으로 전국 파트너를 모집합니다.</p>
+      <div class="contact-row">📞 <a href="tel:010-8653-4054">010-8653-4054</a></div>
+      <div class="contact-row">📍 경기도 의정부시</div>
+      <div class="contact-row">⏰ 평일 09:00 – 18:00</div>
+    </div>
+    <form class="apply-form" id="applyForm">
+      <div class="form-row">
+        <div class="form-group"><label>이름 *</label><input type="text" name="name" placeholder="홍길동" required/></div>
+        <div class="form-group"><label>연락처 *</label><input type="tel" name="phone" placeholder="010-0000-0000" required/></div>
+      </div>
+      <div class="form-group"><label>이메일</label><input type="email" name="email" placeholder="example@email.com"/></div>
+      <div class="form-row">
+        <div class="form-group"><label>지역 *</label><input type="text" name="region" placeholder="의정부시" required/></div>
+        <div class="form-group"><label>직업/업종</label><input type="text" name="job" placeholder="직장인, 자영업"/></div>
+      </div>
+      <div class="form-group"><label>신청 유형 *</label>
+        <select name="type" required>
+          <option value="">선택해주세요</option>
+          <option value="대리점">대리점 파트너 (20만원)</option>
+          <option value="딜러">딜러 파트너 (1만원)</option>
+          <option value="영업사원">영업사원 지원</option>
+          <option value="문의">서비스 문의</option>
+        </select>
+      </div>
+      <div class="form-group"><label>문의 내용</label><textarea name="message" placeholder="궁금하신 점을 자유롭게 작성해주세요."></textarea></div>
+      <button type="submit" class="form-submit-btn">신청서 제출하기</button>
+      <div id="formMsg">✅ 신청 완료! 곧 연락드리겠습니다.</div>
+    </form>
+    <div class="footer-bar">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:.3rem;">RUTA <span style="color:var(--gold)">GLOBAL</span></div>
+      <div style="font-size:.72rem;color:var(--muted);font-style:italic;margin-bottom:1rem;">세계를 향한 비즈니스의 길을 만드는 기업</div>
+      <div style="border-top:1px solid rgba(184,150,78,.12);padding-top:1rem;text-align:left;">
+        <div style="font-size:.75rem;font-weight:700;color:rgba(232,236,244,.5);margin-bottom:.6rem;font-family:'Montserrat',sans-serif;letter-spacing:1px;">운영사</div>
+        <div style="font-size:.78rem;color:rgba(232,236,244,.35);line-height:2;">
+          <div><b style="color:rgba(232,236,244,.55)">(주)비에스컴퍼니</b></div>
+          <div>📍 경기도 의정부시 호국로 1195-1, 4층</div>
+          <div>🏢 사업자번호 : 761-87-02647</div>
+          <div>📦 통신판매업 : 제2023-의정부흥선-0457호</div>
+          <div>✉️ <a href="mailto:hypo3300@naver.com" style="color:var(--gold2);text-decoration:none;">hypo3300@naver.com</a></div>
         </div>
-        <div class="form-submit">
-          <button type="submit" class="btn-gold">신청서 제출하기</button>
-          <span id="formMsg">✅ 신청 완료! 곧 연락드리겠습니다.</span>
-        </div>
-      </form>
+      </div>
+      <div style="font-size:.68rem;color:rgba(232,236,244,.18);margin-top:1rem;text-align:center;">© 2025 루타글로벌 · (주)비에스컴퍼니. All rights reserved.</div>
     </div>
+    <div style="height:1rem;"></div>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="logo">RUTA <span>GLOBAL</span> · 루타글로벌</div>
-      <div class="tagline">세계를 향한 비즈니스의 길을 만드는 기업</div>
-      <p>국내 시장에 머무르지 않고 더 넓은 유통과 무역의 흐름을 연결합니다. 수출입, 물류, 유통, 온라인 비즈니스를 하나의 흐름으로.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="#services">쇼핑몰 분양 & PG</a></li>
-        <li><a href="#services">온라인 결제 시스템</a></li>
-        <li><a href="#services">세무 컨설팅</a></li>
-        <li><a href="#services">AI 교육 강의</a></li>
-        <li><a href="#services">정부지원금 컨설팅</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Partnership</h4>
-      <ul>
-        <li><a href="#structure">대리점 파트너</a></li>
-        <li><a href="#structure">딜러 파트너</a></li>
-        <li><a href="#apply">영업사원 지원</a></li>
-        <li><a href="#process">진행절차</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="tel:010-8653-4054">010-8653-4054</a></li>
-        <li><a href="#apply">파트너 신청</a></li>
-        <li><a href="#about">브랜드 스토리</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 루타글로벌 (Ruta Global). All rights reserved.</p>
-    <div class="footer-operator">운영사 : 주식회사 비에스컴퍼니 · 경기도 의정부시</div>
-  </div>
-</footer>
+</div>
+
+<nav class="bottom-nav">
+  <button class="nav-tab active" id="tab-home" onclick="goPage('home')"><span class="tab-icon">🏠</span><span class="tab-label">홈</span><div class="tab-dot"></div></button>
+  <button class="nav-tab" id="tab-brand" onclick="goPage('brand')"><span class="tab-icon">🌐</span><span class="tab-label">브랜드</span><div class="tab-dot"></div></button>
+  <button class="nav-tab" id="tab-partner" onclick="goPage('partner')"><span class="tab-icon">🤝</span><span class="tab-label">파트너십</span><div class="tab-dot"></div></button>
+  <button class="nav-tab" id="tab-services" onclick="goPage('services')"><span class="tab-icon">📋</span><span class="tab-label">서비스</span><div class="tab-dot"></div></button>
+  <button class="nav-tab" id="tab-apply" onclick="goPage('apply')"><span class="tab-icon">✍️</span><span class="tab-label">신청</span><div class="tab-dot"></div></button>
+</nav>
 
 <script>
-// ── CURSOR ──
-const cur = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX+'px';
-  cur.style.top = e.clientY+'px';
-  setTimeout(()=>{
-    ring.style.left = e.clientX+'px';
-    ring.style.top = e.clientY+'px';
-  }, 80);
-});
+let current = 'home';
+function goPage(name){
+  if(name===current) return;
+  const oldPage = document.getElementById('page-'+current);
+  const newPage = document.getElementById('page-'+name);
+  oldPage.classList.add('exit');
+  setTimeout(()=>{ oldPage.classList.remove('active','exit'); oldPage.scrollTop=0; },320);
+  newPage.classList.add('active');
+  document.getElementById('tab-'+current).classList.remove('active');
+  document.getElementById('tab-'+name).classList.add('active');
+  current=name;
+}
 
-// ── NAV SCROLL ──
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', ()=>{
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-});
-
-// ── SCROLL ANIMATIONS ──
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
-},{threshold:0.1});
-document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>observer.observe(el));
-
-// ── FORM SUBMIT → Google Apps Script ──
-const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; // ← 배포 후 URL 교체
-
-document.getElementById('applyForm').addEventListener('submit', async function(e){
+const SCRIPT_URL='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+document.getElementById('applyForm').addEventListener('submit',async function(e){
   e.preventDefault();
-  const btn = this.querySelector('button[type=submit]');
-  const msg = document.getElementById('formMsg');
-  btn.textContent = '제출 중...';
-  btn.disabled = true;
-
-  const data = Object.fromEntries(new FormData(this));
-  data.timestamp = new Date().toLocaleString('ko-KR');
-  data.brand = '루타글로벌';
-
-  try {
-    await fetch(SCRIPT_URL, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(data)
-    });
-    msg.style.display = 'inline';
-    this.reset();
-  } catch(err) {
-    alert('오류가 발생했습니다. 직접 연락 부탁드립니다: 010-8653-4054');
-  }
-  btn.textContent = '신청서 제출하기';
-  btn.disabled = false;
+  const btn=this.querySelector('button[type=submit]');
+  const msg=document.getElementById('formMsg');
+  btn.textContent='제출 중...'; btn.disabled=true;
+  const data=Object.fromEntries(new FormData(this));
+  data.timestamp=new Date().toLocaleString('ko-KR');
+  try{
+    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    msg.style.display='block'; this.reset();
+  }catch(err){alert('오류가 발생했습니다. 직접 연락 부탁드립니다: 010-8653-4054');}
+  btn.textContent='신청서 제출하기'; btn.disabled=false;
 });
 </script>
 </body>
