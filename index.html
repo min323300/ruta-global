@@ -248,7 +248,22 @@ textarea{min-height:100px;resize:none;}
   <div class="page" id="page-services">
     <div class="page-header"><div class="eyebrow">One-Stop Plan</div><div class="page-title">루타글로벌<br><em>원스톱 서비스</em></div></div>
     <div class="svc-list">
-      <div class="svc-item" id="svc1"><div class="svc-item-icon">&#128722;</div><div class="svc-item-body"><h3>쇼핑몰 분양 &amp; PG 연동</h3><p>전용 쇼핑몰 제작부터 카드 결제 시스템 연동까지. 비사업자도 온라인 판매 시작 가능.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">&#8250;</span></div>
+      <div class="svc-item" id="svc1">
+  <div class="svc-item-icon">&#128722;</div>
+  <div class="svc-item-body">
+    <h3>쇼핑몰 분양 &amp; PG 연동</h3>
+    <p>전용 쇼핑몰 제작부터 카드 결제 시스템 연동까지. 비사업자도 온라인 판매 시작 가능.</p>
+    <span class="svc-badge now">즉시 시작</span>
+    <div style="margin-top:.9rem;display:flex;gap:.6rem;flex-wrap:wrap;">
+      <button onclick="window.open('https://gasway.shop','_blank')" style="background:linear-gradient(135deg,#c9a84c,#dfc068);color:#141c2b;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;padding:.55rem 1.2rem;border-radius:6px;border:none;cursor:pointer;display:flex;align-items:center;gap:.4rem;">
+        &#128722; 담누리마켓 바로가기
+      </button>
+      <button id="svc1-apply" style="background:transparent;border:1px solid rgba(201,168,76,.5);color:#dfc068;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:1px;padding:.55rem 1rem;border-radius:6px;cursor:pointer;">
+        분양 신청하기
+      </button>
+    </div>
+  </div>
+</div>
       <div class="svc-item" id="svc2"><div class="svc-item-icon">&#128179;</div><div class="svc-item-body"><h3>온라인 결제 시스템</h3><p>블로그 결제, 라이브방송 결제, 비사업자 결제까지 다양한 채널 통합 지원.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">&#8250;</span></div>
       <div class="svc-item" id="svc3"><div class="svc-item-icon">&#128202;</div><div class="svc-item-body"><h3>세무 컨설팅 연계</h3><p>개인·법인 사업자 신규 등록, 기장료 연계, 종합소득세·법인세 신고 지원.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">&#8250;</span></div>
       <div class="svc-item" id="svc4"><div class="svc-item-icon">&#129302;</div><div class="svc-item-body"><h3>AI 교육 강의</h3><p>대리점 운영 교육, 온라인 홍보 전략, AI 활용 비즈니스 교육 과정 운영.</p><span class="svc-badge now">즉시 시작</span></div><span class="svc-arrow">&#8250;</span></div>
@@ -313,6 +328,11 @@ textarea{min-height:100px;resize:none;}
   <button class="nav-tab active" id="tab-home"><span class="tab-icon">&#127968;</span><span class="tab-label">홈</span><div class="tab-dot"></div></button>
   <button class="nav-tab" id="tab-brand"><span class="tab-icon">&#127758;</span><span class="tab-label">브랜드</span><div class="tab-dot"></div></button>
   <button class="nav-tab" id="tab-partner"><span class="tab-icon">&#129309;</span><span class="tab-label">파트너십</span><div class="tab-dot"></div></button>
+  <button class="nav-tab" id="tab-shop" onclick="window.open('https://gasway.shop','_blank')" style="position:relative;">
+    <span class="tab-icon">&#128722;</span>
+    <span class="tab-label">쇼핑몰</span>
+    <div style="position:absolute;top:.3rem;right:.8rem;width:6px;height:6px;border-radius:50%;background:#c9a84c;"></div>
+  </button>
   <button class="nav-tab" id="tab-services"><span class="tab-icon">&#128203;</span><span class="tab-label">서비스</span><div class="tab-dot"></div></button>
   <button class="nav-tab" id="tab-apply"><span class="tab-icon">&#9997;</span><span class="tab-label">신청</span><div class="tab-dot"></div></button>
 </nav>
@@ -351,6 +371,7 @@ document.getElementById('qc-partner').addEventListener('click', function(){ goPa
 document.getElementById('qc-services').addEventListener('click', function(){ goPage('services'); });
 document.getElementById('qc-apply').addEventListener('click', function(){ goPage('apply'); });
 document.getElementById('svc1').addEventListener('click', function(){ goPage('apply'); });
+document.getElementById('svc1-apply').addEventListener('click', function(e){ e.stopPropagation(); goPage('apply'); });
 document.getElementById('svc2').addEventListener('click', function(){ goPage('apply'); });
 document.getElementById('svc3').addEventListener('click', function(){ goPage('apply'); });
 document.getElementById('svc4').addEventListener('click', function(){ goPage('apply'); });
