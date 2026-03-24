@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>담누리마켓 대리점 입점 제안 | 루타글로벌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#141c2b;--ink2:#1b2436;--ink3:#222f45;--gold:#c9a84c;--gold2:#dfc068;--gold3:#f2d98a;--text:#f0f2f8;--muted:#b0bfd8;--muted2:#d0dcea;--border:rgba(201,168,76,.28);--card:rgba(255,255,255,.055);--nav-h:60px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--text);font-family:'Noto Sans KR',sans-serif;line-height:1.7;}
+
+/* NAV */
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);background:linear-gradient(135deg,#1a2238,#141c2b,#1e2a1a);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.2rem;backdrop-filter:blur(12px);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:1.5px;color:#fff;text-decoration:none;display:flex;align-items:center;gap:.5rem;}
+.nav-logo span{color:var(--gold);}
+.nav-back{background:transparent;border:1px solid var(--border);color:var(--gold2);font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:1.5px;padding:.38rem .9rem;border-radius:3px;cursor:pointer;text-transform:uppercase;}
+.nav-apply-btn{background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:1.5px;padding:.38rem .9rem;border-radius:3px;border:none;cursor:pointer;text-transform:uppercase;}
+
+/* LOADING */
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:1rem;}
+.loading-ring{width:40px;height:40px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading p{font-size:.85rem;color:var(--muted);font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase;}
+
+/* CONTENT */
+.content{display:none;padding-top:var(--nav-h);}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#141c2b 0%,#1a2238 50%,#141c2b 100%);padding:3rem 1.5rem 2.5rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,168,76,.08) 0%,transparent 70%);}
+.hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;gap:.6rem;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:24px;height:1px;background:var(--gold);opacity:.6;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,6vw,3rem);font-weight:400;line-height:1.2;margin-bottom:.8rem;position:relative;}
+.hero h1 em{font-style:italic;color:var(--gold2);}
+.hero-sub{font-size:.9rem;color:var(--muted2);max-width:500px;margin:0 auto 1.5rem;font-weight:300;}
+.hero-cta{display:inline-block;background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;padding:.8rem 2rem;border-radius:4px;border:none;cursor:pointer;}
+
+/* SECTION */
+.section{padding:2rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.05);}
+.section:nth-child(even){background:rgba(255,255,255,.02);}
+.sec-eyebrow{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;margin-bottom:1rem;line-height:1.3;}
+.sec-title em{font-style:italic;color:var(--gold2);}
+.sec-desc{font-size:.88rem;color:var(--muted2);font-weight:300;line-height:1.8;margin-bottom:1.2rem;}
+
+/* TARGET CARDS */
+.target-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem;}
+.target-card{background:linear-gradient(145deg,#2a3347,#232d40);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;display:flex;align-items:flex-start;gap:.7rem;}
+.target-icon{font-size:1.4rem;flex-shrink:0;}
+.target-text{font-size:.8rem;color:var(--muted2);font-weight:300;line-height:1.6;}
+
+/* FEE TABLE */
+.fee-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.78rem;}
+.fee-table th{background:#1b2436;color:var(--gold);font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;padding:.7rem .8rem;border-bottom:1px solid var(--border);text-align:left;}
+.fee-table td{padding:.65rem .8rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--muted2);}
+.fee-table tr:last-child td{background:rgba(201,168,76,.08);color:var(--text);font-weight:700;border-bottom:2px solid var(--gold);}
+.fee-highlight{color:var(--gold);font-weight:700;}
+.compare-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-top:1.2rem;}
+.compare-item{background:linear-gradient(145deg,#2a3347,#232d40);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1rem;text-align:center;}
+.compare-item.best{border-color:var(--gold);background:rgba(201,168,76,.08);}
+.compare-name{font-size:.7rem;color:var(--muted);margin-bottom:.4rem;font-family:'Montserrat',sans-serif;letter-spacing:1px;}
+.compare-amount{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);}
+.compare-item.best .compare-amount{color:var(--gold2);}
+.compare-label{font-size:.62rem;color:var(--muted);margin-top:.2rem;}
+
+/* BENEFIT CARDS */
+.benefit-list{display:flex;flex-direction:column;gap:.8rem;margin-top:1rem;}
+.benefit-item{background:linear-gradient(145deg,#2a3347,#232d40);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.2rem;display:flex;gap:.8rem;align-items:flex-start;}
+.benefit-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:rgba(201,168,76,.25);line-height:1;flex-shrink:0;width:2rem;}
+.benefit-body h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem;}
+.benefit-body p{font-size:.82rem;color:var(--muted2);font-weight:300;line-height:1.7;}
+
+/* PROCESS */
+.process-list{margin-top:1rem;}
+.process-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;position:relative;}
+.process-item:not(:last-child)::after{content:'';position:absolute;left:1.1rem;top:3rem;width:1px;height:calc(100% - 1.5rem);background:linear-gradient(to bottom,var(--gold),transparent);opacity:.3;}
+.process-dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--gold);background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:.55rem;font-weight:700;color:var(--gold);flex-shrink:0;}
+.process-body h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem;}
+.process-body p{font-size:.82rem;color:var(--muted2);font-weight:300;line-height:1.6;}
+.process-time{font-size:.68rem;color:var(--gold);font-family:'Montserrat',sans-serif;letter-spacing:1px;margin-top:.3rem;}
+
+/* SIMULATION */
+.sim-card{background:linear-gradient(145deg,#2a3347,#232d40);border:1px solid var(--border);border-radius:14px;padding:1.4rem;margin-bottom:1rem;}
+.sim-title{font-size:.9rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.sim-row{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem;}
+.sim-row:last-child{border-bottom:none;padding-top:.8rem;font-weight:700;font-size:.95rem;}
+.sim-row span:first-child{color:var(--muted2);}
+.sim-row span:last-child{color:var(--text);}
+.sim-row.total span:last-child{color:var(--gold2);font-family:'Cormorant Garamond',serif;font-size:1.3rem;}
+.sim-minus{color:#e88;}
+.sim-plus{color:#8e8;}
+
+/* FAQ */
+.faq-list{margin-top:1rem;display:flex;flex-direction:column;gap:.6rem;}
+.faq-item{background:linear-gradient(145deg,#2a3347,#232d40);border:1px solid rgba(255,255,255,.08);border-radius:10px;overflow:hidden;}
+.faq-q{padding:1rem 1.2rem;font-size:.88rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq-q::after{content:'﹢';color:var(--gold);font-size:1.1rem;flex-shrink:0;transition:transform .2s;}
+.faq-item.open .faq-q::after{content:'﹣';}
+.faq-a{display:none;padding:.8rem 1.2rem 1rem;font-size:.82rem;color:var(--muted2);font-weight:300;line-height:1.8;border-top:1px solid rgba(255,255,255,.05);}
+.faq-item.open .faq-a{display:block;}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.03));border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:center;}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;margin-bottom:.6rem;}
+.cta-section h2 em{font-style:italic;color:var(--gold2);}
+.cta-section p{font-size:.88rem;color:var(--muted2);margin-bottom:1.5rem;font-weight:300;}
+.cta-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
+.btn-gold{background:var(--gold);color:var(--ink);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;padding:.8rem 1.8rem;border-radius:4px;border:none;cursor:pointer;}
+.btn-outline{border:1px solid var(--border);color:var(--gold2);background:transparent;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;padding:.8rem 1.8rem;border-radius:4px;cursor:pointer;}
+
+/* BADGE */
+.badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px;}
+.badge-gold{background:rgba(201,168,76,.15);color:var(--gold);}
+.badge-green{background:rgba(100,200,120,.15);color:#7ec87e;}
+
+/* HIGHLIGHT BOX */
+.highlight-box{background:rgba(201,168,76,.08);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;font-size:.85rem;color:var(--muted2);line-height:1.8;}
+.highlight-box strong{color:var(--gold2);}
+
+/* NOTICE */
+.notice{font-size:.72rem;color:var(--muted);line-height:1.7;margin-top:.8rem;padding:.8rem;background:rgba(255,255,255,.02);border-radius:6px;border-left:2px solid rgba(201,168,76,.3);}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a class="nav-logo" href="index.html">← RUTA <span>GLOBAL</span></a>
+  <div style="display:flex;gap:.5rem;">
+    <button class="nav-back" onclick="window.open('https://gasway.shop','_blank')">쇼핑몰 보기</button>
+    <button class="nav-apply-btn" id="btn-apply-top">입점 신청</button>
+  </div>
+</nav>
+
+<!-- 로딩 -->
+<div class="loading" id="loading">
+  <div class="loading-ring"></div>
+  <p>Loading...</p>
+</div>
+
+<!-- 콘텐츠 -->
+<div class="content" id="content">
+
+  <!-- HERO -->
+  <div class="hero" id="hero-section">
+    <div class="hero-eyebrow" id="hero-eyebrow">담누리마켓 대리점</div>
+    <h1 id="hero-title">내 쇼핑몰, 내 브랜드,<br><em>내 수익</em></h1>
+    <p class="hero-sub" id="hero-sub">담누리마켓과 함께 시작하세요</p>
+    <button class="hero-cta" id="btn-hero-cta">지금 입점 신청하기</button>
+  </div>
+
+  <!-- 섹션 1: 타겟 -->
+  <div class="section" id="sec-target">
+    <div class="sec-eyebrow" id="target-eyebrow">Who</div>
+    <div class="sec-title" id="target-title">이런 분께 <em>딱 맞습니다</em></div>
+    <div class="target-grid" id="target-grid">
+      <!-- 구글시트에서 로드 -->
+    </div>
+  </div>
+
+  <!-- 섹션 2: 수수료 비교 -->
+  <div class="section" id="sec-fee">
+    <div class="sec-eyebrow">수수료 비교</div>
+    <div class="sec-title">플랫폼별 <em>수수료 비교</em></div>
+    <p class="sec-desc">온라인 쇼핑몰 창업 시 가장 큰 부담은 플랫폼 수수료입니다. 실제 수치를 비교해보세요.</p>
+    <div style="overflow-x:auto;">
+      <table class="fee-table" id="fee-table">
+        <thead>
+          <tr>
+            <th>플랫폼</th>
+            <th>판매 수수료</th>
+            <th>정산 주기</th>
+            <th>총 부담</th>
+          </tr>
+        </thead>
+        <tbody id="fee-tbody">
+          <!-- 구글시트에서 로드 -->
+        </tbody>
+      </table>
+    </div>
+    <p class="notice" id="fee-notice">※ 수수료율은 카테고리 및 매출 등급에 따라 변동될 수 있습니다.</p>
+
+    <div style="margin-top:1.5rem;">
+      <div class="sec-eyebrow">실수령액 비교</div>
+      <p class="sec-desc">100만원 판매 시 실수령액</p>
+      <div class="compare-box" id="compare-box">
+        <!-- 구글시트에서 로드 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 3: 입점 혜택 -->
+  <div class="section" id="sec-benefit">
+    <div class="sec-eyebrow">Benefits</div>
+    <div class="sec-title">대리점 <em>입점 혜택</em></div>
+    <div class="benefit-list" id="benefit-list">
+      <!-- 구글시트에서 로드 -->
+    </div>
+  </div>
+
+  <!-- 섹션 4: 입점 절차 -->
+  <div class="section" id="sec-process">
+    <div class="sec-eyebrow">Process</div>
+    <div class="sec-title">입점 <em>절차 5단계</em></div>
+    <div class="process-list" id="process-list">
+      <!-- 구글시트에서 로드 -->
+    </div>
+    <div class="highlight-box">
+      ⚡ <strong>빠른 시작 가능!</strong> PG사 승인 완료 후 바로 판매 시작 가능!<br>
+      본사 상품은 별도 준비 없이 즉시 판매 가능 — <strong>재고 부담 제로!</strong>
+    </div>
+  </div>
+
+  <!-- 섹션 5: 수익 시뮬레이션 -->
+  <div class="section" id="sec-sim">
+    <div class="sec-eyebrow">Simulation</div>
+    <div class="sec-title">월 수익 <em>시뮬레이션</em></div>
+    <p class="sec-desc">실제 운영 시 예상 수익을 계산해보세요.</p>
+    <div id="sim-cards">
+      <!-- 구글시트에서 로드 -->
+    </div>
+  </div>
+
+  <!-- 섹션 6: 노출 순위 -->
+  <div class="section" id="sec-rank">
+    <div class="sec-eyebrow">Fair System</div>
+    <div class="sec-title">광고비 없는 <em>공정한 노출</em></div>
+    <p class="sec-desc">담누리마켓은 광고비가 아닌 고객 만족도(리뷰/별점)를 기준으로 상품이 노출됩니다.</p>
+    <div class="benefit-list" id="rank-list">
+      <!-- 구글시트에서 로드 -->
+    </div>
+  </div>
+
+  <!-- 섹션 7: FAQ -->
+  <div class="section" id="sec-faq">
+    <div class="sec-eyebrow">FAQ</div>
+    <div class="sec-title">자주 묻는 <em>질문</em></div>
+    <div class="faq-list" id="faq-list">
+      <!-- 구글시트에서 로드 -->
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>지금 바로 <em>시작하세요</em></h2>
+    <p>업계 최저 수수료 4.5% | 내 브랜드 내 쇼핑몰 | 즉시 판매 시작</p>
+    <div class="cta-btns">
+      <button class="btn-gold" id="btn-apply-bottom">입점 신청하기</button>
+      <button class="btn-outline" onclick="window.open('https://gasway.shop','_blank')">쇼핑몰 구경하기</button>
+    </div>
+    <div style="margin-top:1.5rem;font-size:.78rem;color:var(--muted);line-height:2;">
+      <div>📞 010-8653-4054</div>
+      <div>✉️ hypo3300@naver.com</div>
+      <div>📍 (주)비에스컴퍼니 · 경기도 의정부시 호국로 1195-1, 4층</div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<script>
+// ══════════════════════════════════════════
+// 구글 Apps Script API URL
+// ══════════════════════════════════════════
+const API_URL = 'YOUR_DEALER_SCRIPT_URL_HERE'; // ← 새 Apps Script 배포 URL
+
+// ══════════════════════════════════════════
+// 데이터 로드 함수
+// ══════════════════════════════════════════
+async function loadData() {
+  try {
+    const res = await fetch(API_URL + '?action=getAll');
+    const data = await res.json();
+    renderAll(data);
+  } catch(e) {
+    // API 연결 전 기본 데이터 표시
+    renderAll(DEFAULT_DATA);
+  } finally {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+}
+
+// ══════════════════════════════════════════
+// 렌더 함수들
+// ══════════════════════════════════════════
+function renderAll(data) {
+  renderTarget(data.targets || DEFAULT_DATA.targets);
+  renderFeeTable(data.fees || DEFAULT_DATA.fees);
+  renderCompare(data.compares || DEFAULT_DATA.compares);
+  renderBenefits(data.benefits || DEFAULT_DATA.benefits);
+  renderProcess(data.process || DEFAULT_DATA.process);
+  renderSim(data.simulations || DEFAULT_DATA.simulations);
+  renderRank(data.ranks || DEFAULT_DATA.ranks);
+  renderFaq(data.faqs || DEFAULT_DATA.faqs);
+}
+
+function renderTarget(items) {
+  document.getElementById('target-grid').innerHTML = items.map(i =>
+    `<div class="target-card"><span class="target-icon">${i.icon}</span><span class="target-text">${i.text}</span></div>`
+  ).join('');
+}
+
+function renderFeeTable(items) {
+  document.getElementById('fee-tbody').innerHTML = items.map(i =>
+    `<tr>
+      <td><strong>${i.platform}</strong></td>
+      <td class="${i.highlight ? 'fee-highlight' : ''}">${i.fee}</td>
+      <td>${i.cycle}</td>
+      <td class="${i.highlight ? 'fee-highlight' : ''}">${i.total}</td>
+    </tr>`
+  ).join('');
+}
+
+function renderCompare(items) {
+  document.getElementById('compare-box').innerHTML = items.map(i =>
+    `<div class="compare-item ${i.best ? 'best' : ''}">
+      <div class="compare-name">${i.name}</div>
+      <div class="compare-amount">${i.amount}</div>
+      <div class="compare-label">${i.label}</div>
+    </div>`
+  ).join('');
+}
+
+function renderBenefits(items) {
+  document.getElementById('benefit-list').innerHTML = items.map((i, idx) =>
+    `<div class="benefit-item">
+      <div class="benefit-num">0${idx+1}</div>
+      <div class="benefit-body"><h4>${i.title}</h4><p>${i.desc}</p></div>
+    </div>`
+  ).join('');
+}
+
+function renderProcess(items) {
+  document.getElementById('process-list').innerHTML = items.map((i, idx) =>
+    `<div class="process-item">
+      <div class="process-dot">0${idx+1}</div>
+      <div class="process-body">
+        <h4>${i.title}</h4>
+        <p>${i.desc}</p>
+        <div class="process-time">⏱ ${i.time}</div>
+      </div>
+    </div>`
+  ).join('');
+}
+
+function renderSim(items) {
+  document.getElementById('sim-cards').innerHTML = items.map(i =>
+    `<div class="sim-card">
+      <div class="sim-title">${i.case_title}</div>
+      ${i.rows.map(r =>
+        `<div class="sim-row ${r.type === 'total' ? 'total' : ''}">
+          <span>${r.label}</span>
+          <span class="${r.type === 'minus' ? 'sim-minus' : r.type === 'total' ? '' : ''}">${r.value}</span>
+        </div>`
+      ).join('')}
+    </div>`
+  ).join('');
+}
+
+function renderRank(items) {
+  document.getElementById('rank-list').innerHTML = items.map((i, idx) =>
+    `<div class="benefit-item">
+      <div class="benefit-num">${idx+1}</div>
+      <div class="benefit-body"><h4>${i.title}</h4><p>${i.desc}</p></div>
+    </div>`
+  ).join('');
+}
+
+function renderFaq(items) {
+  document.getElementById('faq-list').innerHTML = items.map(i =>
+    `<div class="faq-item">
+      <div class="faq-q">${i.q}</div>
+      <div class="faq-a">${i.a}</div>
+    </div>`
+  ).join('');
+
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', function() {
+      this.parentElement.classList.toggle('open');
+    });
+  });
+}
+
+// ══════════════════════════════════════════
+// 기본 데이터 (API 연결 전 표시)
+// ══════════════════════════════════════════
+const DEFAULT_DATA = {
+  targets: [
+    {icon:'🛒', text:'온라인 쇼핑몰을 시작하고 싶지만 개발/운영이 어려우신 분'},
+    {icon:'💸', text:'네이버·쿠팡 수수료가 너무 높아 고민이신 분'},
+    {icon:'🏷️', text:'내 브랜드로 내 쇼핑몰을 운영하고 싶으신 분'},
+    {icon:'📦', text:'판매 상품이 없어도 바로 시작하고 싶으신 분'}
+  ],
+  fees: [
+    {platform:'네이버 스마트스토어', fee:'약 3.74%', cycle:'구매확정 후 1~2일', total:'약 5~6%', highlight:false},
+    {platform:'쿠팡 마켓플레이스', fee:'4~10.9%', cycle:'구매확정 후 40~50일', total:'약 8~13%', highlight:false},
+    {platform:'11번가', fee:'7~12%', cycle:'구매확정 후 1~2일', total:'약 9~14%', highlight:false},
+    {platform:'G마켓/옥션', fee:'7~12%', cycle:'구매확정 후 8일', total:'약 9~14%', highlight:false},
+    {platform:'🏪 담누리마켓', fee:'본사 2.0%', cycle:'PG 정산 후 즉시', total:'총 4.5%', highlight:true}
+  ],
+  compares: [
+    {name:'네이버', amount:'약 93만원', label:'수수료 약 7%', best:false},
+    {name:'쿠팡', amount:'약 87만원', label:'수수료 약 13%', best:false},
+    {name:'담누리마켓', amount:'95.5만원', label:'수수료 4.5%', best:true}
+  ],
+  benefits: [
+    {title:'내 브랜드 · 내 쇼핑몰', desc:'대리점만의 브랜드명, 로고, 테마 색상 설정. 전용 URL(gasway.shop?dealer=나의ID) 발급으로 완전한 내 쇼핑몰 운영.'},
+    {title:'이중 수익 구조', desc:'본사 상품 판매(95.5% 수령)와 내 자체 상품 판매(마진 직접 설정) 두 가지 방법으로 수익 창출.'},
+    {title:'쉬운 상품 등록', desc:'복잡한 절차 없이 관리자 페이지에서 5분 내 등록. 구글시트 직접 입력도 가능.'},
+    {title:'재고 부담 제로', desc:'본사 상품을 내 쇼핑몰에서 바로 판매 가능. 재고 없이도 즉시 판매 시작.'}
+  ],
+  process: [
+    {title:'입점 상담 및 계약 체결', desc:'계약서 + 사업자등록증 제출. 사업 구조 및 수익 구조 안내.', time:'1일'},
+    {title:'PG사 가맹점 등록', desc:'윈글로벌 PG사에 대리점 사업자번호로 카드사 직접 계약.', time:'3~5 영업일'},
+    {title:'브랜드 세팅', desc:'브랜드명 / 로고 / 테마색상 설정 → 본사에서 시스템 반영.', time:'1일'},
+    {title:'관리자 계정 발급', desc:'dealer-admin 페이지 아이디/비밀번호 설정 완료.', time:'즉시'},
+    {title:'전용 쇼핑몰 운영 시작', desc:'전용 URL 발급 후 본사 상품 즉시 판매 시작!', time:'즉시'}
+  ],
+  simulations: [
+    {case_title:'💼 Case 1 — 본사 상품만 판매 (월 매출 500만원)', rows:[
+      {label:'월 매출', value:'5,000,000원', type:''},
+      {label:'PG 수수료 (2.5%)', value:'-125,000원', type:'minus'},
+      {label:'본사 마진 (2.0%)', value:'-100,000원', type:'minus'},
+      {label:'대리점 실수령액', value:'4,775,000원', type:'total'}
+    ]},
+    {case_title:'🚀 Case 2 — 본사 + 내 상품 혼합 (월 매출 500만원)', rows:[
+      {label:'본사 상품 매출 300만원', value:'2,856,500원', type:''},
+      {label:'내 상품 매출 200만원 (마진 30%)', value:'+600,000원', type:''},
+      {label:'월 총 수익 (예상)', value:'약 3,456,500원 이상', type:'total'}
+    ]}
+  ],
+  ranks: [
+    {title:'1순위 — 별점 평균 높은 순', desc:'5점 만점 기준으로 고객 만족도가 높은 상품이 상위 노출됩니다.'},
+    {title:'2순위 — 리뷰 수 많은 순', desc:'실제 구매 후 작성된 리뷰가 많을수록 신뢰도가 높아집니다.'},
+    {title:'3순위 — 판매 수량 많은 순', desc:'누적 판매량이 많은 인기 상품이 자연스럽게 상위에 노출됩니다.'},
+    {title:'4순위 — 등록일 최신 순', desc:'신규 상품도 공정하게 노출 기회를 가집니다.'}
+  ],
+  faqs: [
+    {q:'사업자가 없어도 입점 가능한가요?', a:'사업자등록증이 있어야 PG사 계약이 가능합니다. 개인사업자 또는 법인 모두 가능합니다.'},
+    {q:'상품이 없어도 시작할 수 있나요?', a:'네! 본사 상품을 즉시 판매할 수 있어 재고 없이 바로 시작 가능합니다.'},
+    {q:'내 상품을 등록하면 타 대리점에도 보이나요?', a:'아니요. 내가 등록한 상품은 내 쇼핑몰에만 노출됩니다. 타 대리점에서는 볼 수 없습니다.'},
+    {q:'쇼핑몰 개발이나 서버 비용이 필요한가요?', a:'전혀 없습니다. 담누리마켓 플랫폼을 그대로 사용하므로 개발비, 서버비, 유지보수비 없이 운영 가능합니다.'},
+    {q:'수수료 외에 추가 비용이 있나요?', a:'가입비/월 이용료는 없습니다. 판매가 발생했을 때만 PG 2.5% + 본사 2%가 차감됩니다.'},
+    {q:'쇼핑몰 주소(URL)는 어떻게 되나요?', a:'gasway.shop?dealer=나의ID 형태로 발급됩니다. 추후 개인 도메인 연결도 가능합니다.'}
+  ]
+};
+
+// ══════════════════════════════════════════
+// 버튼 이벤트
+// ══════════════════════════════════════════
+document.getElementById('btn-apply-top').addEventListener('click', function() {
+  window.location.href = 'index.html#apply';
+});
+document.getElementById('btn-hero-cta').addEventListener('click', function() {
+  window.location.href = 'index.html#apply';
+});
+document.getElementById('btn-apply-bottom').addEventListener('click', function() {
+  window.location.href = 'index.html#apply';
+});
+
+// 페이지 로드
+loadData();
+</script>
+</body>
+</html>
