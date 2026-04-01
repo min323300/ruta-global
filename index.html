@@ -2445,8 +2445,21 @@ document.querySelectorAll('.filter-btn').forEach(function(btn) {
   });
 });
 
-// Try loading cases from Google Sheets
+// Load cases from localStorage (synced with admin-cases.html) or Google Sheets
 (function loadCases() {
+  // 1) Try localStorage first (admin page saves here)
+  var stored = localStorage.getItem('ruta_cases');
+  if (stored) {
+    try {
+      var parsed = JSON.parse(stored);
+      if (parsed && parsed.length > 0) {
+        casesData = parsed;
+        renderCases();
+        return;
+      }
+    } catch(e) {}
+  }
+  // 2) Try Google Sheets
   fetch(SCRIPT_URL + '?action=getCases')
     .then(function(r){ return r.json(); })
     .then(function(data){

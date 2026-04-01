@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>실전 사례 관리 | 루타글로벌 Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #2563EB;
+  --accent: #D4A853;
+  --bg: #F1F5F9;
+  --card: #FFFFFF;
+  --text: #1E293B;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --danger: #EF4444;
+  --success: #10B981;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* TOP BAR */
+.topbar {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.topbar-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.topbar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.topbar-subtitle {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.topbar-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.topbar-links a {
+  font-size: 0.85rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.topbar-links a:hover { text-decoration: underline; }
+
+/* MAIN */
+.main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+/* HEADER */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.page-header p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover { background: #1d4ed8; }
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn-danger:hover { background: #dc2626; }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+}
+
+/* STATS */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.stat-card p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+/* TABLE */
+.table-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.search-input {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  width: 250px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-input:focus { border-color: var(--primary); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  text-align: left;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border);
+  background: #F8FAFC;
+}
+
+tbody td {
+  padding: 0.9rem 1.2rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+tbody tr:hover { background: #F8FAFC; }
+
+.case-thumb {
+  width: 60px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--border);
+}
+
+.case-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tag-online { background: #DBEAFE; color: #1D4ED8; }
+.tag-logistics { background: #D1FAE5; color: #059669; }
+.tag-trade { background: #FEF3C7; color: #B45309; }
+.tag-consulting { background: #F3E8FF; color: #7C3AED; }
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--muted);
+}
+
+.empty-state h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+/* MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--card);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.modal-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--bg);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.modal-close:hover { background: var(--border); }
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 0.8rem;
+  justify-content: flex-end;
+}
+
+.preview-box {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 120px;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.preview-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--text);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 600;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast.success { background: var(--success); }
+.toast.error { background: var(--danger); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .table-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input { width: 100%; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-logo">
+    <div class="topbar-icon">R</div>
+    <div>
+      <div class="topbar-title">실전 사례 관리</div>
+      <div class="topbar-subtitle">루타글로벌 Admin</div>
+    </div>
+  </div>
+  <div class="topbar-links">
+    <a href="index.html">홈페이지로 이동 →</a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div>
+      <h1>실전 사례 관리</h1>
+      <p>홈페이지에 표시되는 실전 사례를 추가/수정/삭제할 수 있습니다</p>
+    </div>
+    <button class="btn btn-primary" onclick="openAddModal()">+ 새 사례 추가</button>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <h3 id="statTotal">0</h3>
+      <p>전체 사례</p>
+    </div>
+    <div class="stat-card">
+      <h3 id="statOnline">0</h3>
+      <p>온라인 비즈니스</p>
+    </div>
+    <div class="stat-card">
+      <h3 id="statLogistics">0</h3>
+      <p>물류 & 유통</p>
+    </div>
+    <div class="stat-card">
+      <h3 id="statTrade">0</h3>
+      <p>수출입 & 무역</p>
+    </div>
+    <div class="stat-card">
+      <h3 id="statConsulting">0</h3>
+      <p>컨설팅</p>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-card">
+    <div class="table-toolbar">
+      <input class="search-input" type="text" placeholder="사례 검색..." oninput="filterCases(this.value)">
+      <div style="display:flex;gap:0.5rem;">
+        <button class="btn btn-outline btn-sm" onclick="exportCSV()">CSV 내보내기</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>이미지</th>
+          <th>카테고리</th>
+          <th>제목</th>
+          <th>설명</th>
+          <th>날짜</th>
+          <th>관리</th>
+        </tr>
+      </thead>
+      <tbody id="casesTableBody">
+        <!-- Rendered by JS -->
+      </tbody>
+    </table>
+
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <h3>아직 등록된 사례가 없습니다</h3>
+      <p>"새 사례 추가" 버튼을 눌러 첫 사례를 등록해보세요</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ADD/EDIT MODAL -->
+<div class="modal-overlay" id="caseModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle">새 사례 추가</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editIndex" value="-1">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>카테고리 *</label>
+          <select id="caseCategory">
+            <option value="온라인">온라인 비즈니스</option>
+            <option value="물류">물류 & 유통</option>
+            <option value="무역">수출입 & 무역</option>
+            <option value="컨설팅">컨설팅</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>날짜</label>
+          <input type="text" id="caseDate" placeholder="예: 2026.04">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>제목 *</label>
+        <input type="text" id="caseTitle" placeholder="사례 제목을 입력하세요">
+      </div>
+
+      <div class="form-group">
+        <label>설명</label>
+        <textarea id="caseDesc" placeholder="사례에 대한 간단한 설명을 작성하세요"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>이미지 URL (선택)</label>
+        <input type="text" id="caseImage" placeholder="https://example.com/image.jpg" oninput="previewImage(this.value)">
+        <div class="preview-box" id="imgPreview">이미지 미리보기</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal()">취소</button>
+      <button class="btn btn-primary" onclick="saveCase()">저장하기</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM -->
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal" style="max-width:400px;">
+    <div class="modal-header">
+      <h2>사례 삭제</h2>
+      <button class="modal-close" onclick="closeDeleteModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>정말로 이 사례를 삭제하시겠습니까?<br>삭제 후 되돌릴 수 없습니다.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeDeleteModal()">취소</button>
+      <button class="btn btn-danger" id="confirmDeleteBtn" onclick="confirmDelete()">삭제하기</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyuT-5DZ5q5rcM79BvCc5hnWkUbHisBCDOi1Z3m9u9Yh5ieTOA7aFWGxUHQseyeBn-DJQ/exec';
+
+// Local Storage key
+var STORAGE_KEY = 'ruta_cases';
+
+// Load cases from localStorage (or default)
+function loadCases() {
+  var stored = localStorage.getItem(STORAGE_KEY);
+  if (stored) {
+    return JSON.parse(stored);
+  }
+  // Default cases
+  return [
+    { category: '온라인', title: '쇼핑몰 분양 성공 사례', desc: '전용 쇼핑몰 오픈 후 첫 달 매출 500만원 달성', image: '', date: '2026.03' },
+    { category: '온라인', title: 'PG 결제 시스템 연동', desc: '블로그 결제 시스템 도입으로 매출 200% 증가', image: '', date: '2026.03' },
+    { category: '온라인', title: '홈페이지 제작 완료', desc: '맞춤형 기업 홈페이지 제작 및 SEO 최적화', image: '', date: '2026.02' },
+    { category: '물류', title: '국제 물류 운송 완료', desc: '중국 이우 → 인천 컨테이너 운송 성공 사례', image: '', date: '2026.02' },
+    { category: '무역', title: '수입대행 완료', desc: '주방용품 수입대행 진행 및 통관 완료', image: '', date: '2026.01' },
+    { category: '컨설팅', title: 'AI 교육 과정 수료', desc: '파트너 대상 AI 활용 비즈니스 교육 완료', image: '', date: '2026.01' }
+  ];
+}
+
+function saveCasesToStorage(cases) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(cases));
+  // Also try to save to Google Sheets
+  try {
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ form_type: 'cases_update', cases: cases, timestamp: new Date().toLocaleString('ko-KR') })
+    });
+  } catch(e) {}
+}
+
+var cases = loadCases();
+var deleteTarget = -1;
+var searchQuery = '';
+
+function getTagClass(cat) {
+  var map = { '온라인': 'tag-online', '물류': 'tag-logistics', '무역': 'tag-trade', '컨설팅': 'tag-consulting' };
+  return map[cat] || 'tag-online';
+}
+
+function renderTable() {
+  var filtered = cases.filter(function(c) {
+    if (!searchQuery) return true;
+    var q = searchQuery.toLowerCase();
+    return (c.title && c.title.toLowerCase().indexOf(q) !== -1) ||
+           (c.desc && c.desc.toLowerCase().indexOf(q) !== -1) ||
+           (c.category && c.category.toLowerCase().indexOf(q) !== -1);
+  });
+
+  var tbody = document.getElementById('casesTableBody');
+  var empty = document.getElementById('emptyState');
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+
+  empty.style.display = 'none';
+  tbody.innerHTML = filtered.map(function(c, i) {
+    var realIndex = cases.indexOf(c);
+    var imgHtml = c.image
+      ? '<img src="' + c.image + '" alt="">'
+      : '📷';
+    return '<tr>' +
+      '<td><div class="case-thumb">' + imgHtml + '</div></td>' +
+      '<td><span class="tag ' + getTagClass(c.category) + '">' + c.category + '</span></td>' +
+      '<td style="font-weight:600;">' + c.title + '</td>' +
+      '<td style="color:var(--muted);max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + (c.desc || '') + '</td>' +
+      '<td style="color:var(--muted);font-size:0.82rem;">' + (c.date || '') + '</td>' +
+      '<td><div class="actions">' +
+        '<button class="btn btn-outline btn-sm" onclick="openEditModal(' + realIndex + ')">수정</button>' +
+        '<button class="btn btn-danger btn-sm" onclick="openDeleteModal(' + realIndex + ')">삭제</button>' +
+      '</div></td>' +
+    '</tr>';
+  }).join('');
+
+  // Update stats
+  document.getElementById('statTotal').textContent = cases.length;
+  document.getElementById('statOnline').textContent = cases.filter(function(c){ return c.category === '온라인'; }).length;
+  document.getElementById('statLogistics').textContent = cases.filter(function(c){ return c.category === '물류'; }).length;
+  document.getElementById('statTrade').textContent = cases.filter(function(c){ return c.category === '무역'; }).length;
+  document.getElementById('statConsulting').textContent = cases.filter(function(c){ return c.category === '컨설팅'; }).length;
+}
+
+function filterCases(q) {
+  searchQuery = q;
+  renderTable();
+}
+
+// MODAL
+function openAddModal() {
+  document.getElementById('editIndex').value = '-1';
+  document.getElementById('modalTitle').textContent = '새 사례 추가';
+  document.getElementById('caseCategory').value = '온라인';
+  document.getElementById('caseTitle').value = '';
+  document.getElementById('caseDesc').value = '';
+  document.getElementById('caseImage').value = '';
+  document.getElementById('caseDate').value = '';
+  document.getElementById('imgPreview').innerHTML = '이미지 미리보기';
+  document.getElementById('caseModal').classList.add('active');
+}
+
+function openEditModal(index) {
+  var c = cases[index];
+  document.getElementById('editIndex').value = index;
+  document.getElementById('modalTitle').textContent = '사례 수정';
+  document.getElementById('caseCategory').value = c.category;
+  document.getElementById('caseTitle').value = c.title;
+  document.getElementById('caseDesc').value = c.desc || '';
+  document.getElementById('caseImage').value = c.image || '';
+  document.getElementById('caseDate').value = c.date || '';
+  previewImage(c.image || '');
+  document.getElementById('caseModal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('caseModal').classList.remove('active');
+}
+
+function saveCase() {
+  var title = document.getElementById('caseTitle').value.trim();
+  if (!title) {
+    showToast('제목을 입력해주세요', 'error');
+    return;
+  }
+
+  var caseObj = {
+    category: document.getElementById('caseCategory').value,
+    title: title,
+    desc: document.getElementById('caseDesc').value.trim(),
+    image: document.getElementById('caseImage').value.trim(),
+    date: document.getElementById('caseDate').value.trim()
+  };
+
+  var editIndex = parseInt(document.getElementById('editIndex').value);
+  if (editIndex >= 0) {
+    cases[editIndex] = caseObj;
+    showToast('사례가 수정되었습니다', 'success');
+  } else {
+    cases.unshift(caseObj);
+    showToast('새 사례가 추가되었습니다', 'success');
+  }
+
+  saveCasesToStorage(cases);
+  renderTable();
+  closeModal();
+}
+
+// DELETE
+function openDeleteModal(index) {
+  deleteTarget = index;
+  document.getElementById('deleteModal').classList.add('active');
+}
+
+function closeDeleteModal() {
+  document.getElementById('deleteModal').classList.remove('active');
+  deleteTarget = -1;
+}
+
+function confirmDelete() {
+  if (deleteTarget >= 0) {
+    cases.splice(deleteTarget, 1);
+    saveCasesToStorage(cases);
+    renderTable();
+    showToast('사례가 삭제되었습니다', 'success');
+  }
+  closeDeleteModal();
+}
+
+function previewImage(url) {
+  var box = document.getElementById('imgPreview');
+  if (url) {
+    box.innerHTML = '<img src="' + url + '" onerror="this.parentElement.innerHTML=\'이미지를 불러올 수 없습니다\'">';
+  } else {
+    box.innerHTML = '이미지 미리보기';
+  }
+}
+
+function exportCSV() {
+  var csv = '카테고리,제목,설명,이미지URL,날짜\n';
+  cases.forEach(function(c) {
+    csv += '"' + c.category + '","' + c.title + '","' + (c.desc||'') + '","' + (c.image||'') + '","' + (c.date||'') + '"\n';
+  });
+  var blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+  var link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'ruta_cases_' + new Date().toISOString().slice(0,10) + '.csv';
+  link.click();
+  showToast('CSV 파일이 다운로드되었습니다', 'success');
+}
+
+function showToast(msg, type) {
+  var toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = 'toast show ' + (type || '');
+  setTimeout(function() { toast.className = 'toast'; }, 3000);
+}
+
+// Close modals on overlay click
+document.getElementById('caseModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.getElementById('deleteModal').addEventListener('click', function(e) {
+  if (e.target === this) closeDeleteModal();
+});
+
+// INIT
+renderTable();
+</script>
+
+</body>
+</html>
